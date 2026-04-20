@@ -403,6 +403,23 @@
             border-bottom: 1px solid var(--bdr)
         }
 
+        .editor-tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: var(--muted);
+            transition: all .2s
+        }
+
+        .editor-tab.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold)
+        }
+
         @media(prefers-reduced-motion:reduce) {
             * {
                 animation-duration: .01ms !important;
@@ -1063,40 +1080,61 @@
 
     <!-- EDITOR MODAL -->
     <div id="editorModal" class="modal-backdrop" role="dialog" aria-modal="true">
-        <div class="flex items-start justify-center min-h-screen p-4 pt-6">
-            <div class="modal-content bg-card border border-bdr rounded-2xl w-full max-w-7xl relative overflow-hidden"
-                style="max-height:94vh">
+        <div class="flex items-start justify-center min-h-screen p-3 sm:p-4 pt-4 sm:pt-6">
+            <div class="modal-content bg-card border border-bdr rounded-2xl w-full max-w-7xl relative overflow-hidden flex flex-col"
+                style="max-height:96vh">
+
+                <!-- Trial Banner -->
                 <div id="trialBanner"
-                    class="hidden bg-gradient-to-r from-gold/10 to-gold/5 border-b border-gold/20 px-6 py-3 flex items-center justify-between flex-shrink-0">
-                    <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-clock text-gold"></i><span
-                            class="text-gold font-medium">15-Day Free Trial Active</span><span
-                            class="text-muted hidden sm:inline">— Upgrade to keep live forever</span></div>
+                    class="hidden bg-gradient-to-r from-gold/10 to-gold/5 border-b border-gold/20 px-4 sm:px-6 py-2.5 flex items-center justify-between flex-shrink-0">
+                    <div class="flex items-center gap-2 text-xs sm:text-sm"><i
+                            class="fa-solid fa-clock text-gold"></i><span class="text-gold font-medium">15-Day Free
+                            Trial Active</span><span class="text-muted hidden sm:inline">— Upgrade to keep live</span>
+                    </div>
                     <a href="https://wa.me/919999999999?text=Hi%2C%20upgrade%20CardForge" target="_blank"
                         class="text-xs bg-gold text-dark font-bold px-3 py-1.5 rounded-lg hover:bg-gold-light transition-colors">Upgrade</a>
                 </div>
-                <div class="flex flex-col lg:flex-row" style="max-height:calc(94vh - 0px);overflow:hidden">
+
+                <!-- Mobile Tabs -->
+                <div class="flex lg:hidden border-b border-bdr flex-shrink-0">
+                    <div class="editor-tab active" data-edtab="edit" onclick="switchEditorTab('edit')"><i
+                            class="fa-solid fa-pen-to-square mr-1.5"></i>Edit</div>
+                    <div class="editor-tab" data-edtab="preview" onclick="switchEditorTab('preview')"><i
+                            class="fa-solid fa-eye mr-1.5"></i>Preview</div>
+                </div>
+
+                <!-- Desktop Label -->
+                <div class="hidden lg:flex border-b border-bdr px-6 py-2 flex-shrink-0">
+                    <span class="text-xs font-semibold text-muted tracking-widest uppercase"><i
+                            class="fa-solid fa-pen-to-square mr-1.5 text-gold"></i>Editor</span>
+                    <span class="mx-3 text-bdr">|</span>
+                    <span class="text-xs font-semibold text-muted tracking-widest uppercase"><i
+                            class="fa-solid fa-eye mr-1.5 text-gold"></i>Live Preview</span>
+                </div>
+
+                <!-- Main Panels -->
+                <div class="flex flex-col lg:flex-row flex-1 overflow-hidden" style="min-height:0">
+
                     <!-- LEFT: Form -->
-                    <div class="lg:w-[45%] p-5 overflow-y-auto border-r border-bdr flex-shrink-0"
-                        style="max-height:94vh" id="editorFormPanel">
-                        <div class="flex items-center justify-between mb-5">
-                            <h3 class="font-display text-xl font-bold">Edit Card</h3><button
-                                onclick="closeModal('editorModal')" class="text-muted hover:text-txt transition-colors"
-                                aria-label="Close"><i class="fa-solid fa-xmark text-lg"></i></button>
+                    <div class="lg:w-[45%] p-4 sm:p-5 overflow-y-auto border-r border-bdr flex-shrink-0"
+                        id="editorFormPanel">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-display text-lg sm:text-xl font-bold">Edit Card</h3>
                         </div>
                         <p id="editorTemplateName"
-                            class="text-gold text-xs font-semibold tracking-wider uppercase mb-5"></p>
+                            class="text-gold text-xs font-semibold tracking-wider uppercase mb-4"></p>
 
-                        <!-- Photo Upload -->
-                        <div class="mb-5">
+                        <!-- Photo -->
+                        <div class="mb-4">
                             <div class="section-label">Profile Photo</div>
                             <div id="photoUploadArea" class="relative cursor-pointer">
                                 <img id="photoPreviewThumb" src=""
-                                    class="w-16 h-16 rounded-full object-cover border-2 border-gold/30 hidden mb-2">
+                                    class="w-14 h-14 rounded-full object-cover border-2 border-gold/30 hidden mb-2">
                                 <div id="uploadPlaceholder"
-                                    class="w-full px-4 py-5 bg-surface border border-dashed border-bdr rounded-xl text-center hover:border-gold/40 transition-colors">
-                                    <i class="fa-solid fa-cloud-arrow-up text-muted text-xl mb-2"></i>
+                                    class="w-full px-4 py-4 bg-surface border border-dashed border-bdr rounded-xl text-center hover:border-gold/40 transition-colors">
+                                    <i class="fa-solid fa-cloud-arrow-up text-muted text-lg mb-1"></i>
                                     <p class="text-muted text-xs">Click to upload photo</p>
-                                    <p class="text-muted/50 text-xs mt-1">PNG, JPG up to 2MB</p>
+                                    <p class="text-muted/50 text-[10px] mt-0.5">PNG, JPG up to 2MB</p>
                                 </div>
                                 <input type="file" id="photoFileInput" accept="image/png,image/jpeg,image/webp"
                                     class="hidden">
@@ -1104,59 +1142,59 @@
                         </div>
 
                         <!-- Basic Info -->
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div class="section-label">Basic Information</div>
-                            <div class="space-y-3">
+                            <div class="space-y-2.5">
                                 <input id="edName" type="text" value="John Smith" oninput="updatePreview()"
-                                    class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                    class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                     placeholder="Full Name">
                                 <input id="edTitle" type="text" value="Chief Executive Officer"
                                     oninput="updatePreview()"
-                                    class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                    class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                     placeholder="Job Title">
                                 <input id="edCompany" type="text" value="Acme Corporation" oninput="updatePreview()"
-                                    class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                    class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                     placeholder="Company Name">
                             </div>
                         </div>
 
                         <!-- About -->
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div class="section-label">About</div>
                             <textarea id="edAbout" rows="3" oninput="updatePreview()"
-                                class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all resize-none"
+                                class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all resize-none"
                                 placeholder="Write about yourself...">Leading Acme Corp with 15+ years of experience in strategic business development and growth.</textarea>
                         </div>
 
                         <!-- Contact -->
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div class="section-label">Contact Details</div>
-                            <div class="space-y-3">
+                            <div class="space-y-2.5">
                                 <input id="edPhone" type="tel" value="+91 98765 43210" oninput="updatePreview()"
-                                    class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                    class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                     placeholder="Phone">
                                 <input id="edEmail" type="email" value="john@acme.in" oninput="updatePreview()"
-                                    class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                    class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                     placeholder="Email">
                                 <input id="edWebsite" type="text" value="www.acme.in" oninput="updatePreview()"
-                                    class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                    class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                     placeholder="Website">
                                 <input id="edAddress" type="text" value="Mumbai, India" oninput="updatePreview()"
-                                    class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                    class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                     placeholder="Address">
                             </div>
                         </div>
 
-                        <!-- Social Media -->
-                        <div class="mb-5">
+                        <!-- Social -->
+                        <div class="mb-4">
                             <div class="section-label">Social Media Links</div>
                             <div id="socialFieldsContainer" class="space-y-2"></div>
                         </div>
 
                         <!-- Testimonials -->
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div class="section-label">Testimonials</div>
-                            <div class="space-y-3" id="testimonialFields">
+                            <div class="space-y-2.5" id="testimonialFields">
                                 <div class="bg-surface border border-bdr rounded-xl p-3 space-y-2">
                                     <input type="text" value="Rahul Verma" oninput="updatePreview()"
                                         class="ed-testi-name editor-field w-full px-3 py-2 bg-card border border-bdr rounded-lg text-txt text-xs transition-all"
@@ -1167,7 +1205,7 @@
                                     <textarea oninput="updatePreview()"
                                         class="ed-testi-text editor-field w-full px-3 py-2 bg-card border border-bdr rounded-lg text-txt text-xs transition-all resize-none"
                                         rows="2"
-                                        placeholder="Testimonial text">Exceptional service and professionalism. Highly recommended for anyone looking for quality work.</textarea>
+                                        placeholder="Testimonial text">Exceptional service and professionalism. Highly recommended.</textarea>
                                 </div>
                                 <div class="bg-surface border border-bdr rounded-xl p-3 space-y-2">
                                     <input type="text" value="Sneha Kapoor" oninput="updatePreview()"
@@ -1179,160 +1217,135 @@
                                     <textarea oninput="updatePreview()"
                                         class="ed-testi-text editor-field w-full px-3 py-2 bg-card border border-bdr rounded-lg text-txt text-xs transition-all resize-none"
                                         rows="2"
-                                        placeholder="Testimonial text">One of the best decisions we made. The results exceeded our expectations.</textarea>
+                                        placeholder="Testimonial text">One of the best decisions we made. Results exceeded expectations.</textarea>
                                 </div>
                             </div>
                         </div>
 
                         <!-- YouTube -->
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div class="section-label">YouTube Video</div>
                             <input id="edYoutube" type="text" value="" oninput="updatePreview()"
-                                class="editor-field w-full px-4 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
+                                class="editor-field w-full px-3.5 py-2.5 bg-surface border border-bdr rounded-xl text-txt text-sm transition-all"
                                 placeholder="Paste YouTube URL here">
                         </div>
 
                         <!-- Slug -->
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div class="section-label">Card URL Slug</div>
                             <div class="flex items-center gap-0">
                                 <div
                                     class="px-3 py-2.5 bg-elevated border border-bdr border-r-0 rounded-l-xl text-muted text-xs whitespace-nowrap">
                                     divic.in/</div>
                                 <input id="edSlug" type="text" value="john-smith" oninput="updatePreview()"
-                                    class="editor-field flex-1 px-4 py-2.5 bg-surface border border-bdr rounded-r-xl text-txt text-sm transition-all"
+                                    class="editor-field flex-1 px-3.5 py-2.5 bg-surface border border-bdr rounded-r-xl text-txt text-sm transition-all"
                                     placeholder="your-name">
                             </div>
-                        </div>
-
-                        <!-- Actions -->
-                        <div class="flex gap-3 pb-4">
-                            <button onclick="handlePublish()"
-                                class="btn-gold flex-1 py-3.5 bg-gold text-dark font-semibold rounded-xl hover:bg-gold-light transition-colors text-sm"><i
-                                    class="fa-solid fa-rocket mr-2"></i>Publish Card</button>
-                            <button onclick="closeModal('editorModal')"
-                                class="px-5 py-3.5 border border-bdr text-muted rounded-xl hover:border-gold/40 transition-all text-sm">Cancel</button>
                         </div>
                     </div>
 
                     <!-- RIGHT: Preview -->
-                    <div class="lg:w-[55%] relative flex-shrink-0" style="max-height:94vh;overflow:hidden;">
-                        <div id="editorPreviewWrap" class="h-full overflow-y-auto" style="max-height:94vh;">
-                            <div class="p-4">
-                                <p class="text-muted text-xs font-semibold tracking-widest uppercase mb-3 text-center">
-                                    Live Preview</p>
-                                <div class="max-w-sm mx-auto">
-                                    <div id="editorPreview"
-                                        class="card-preview-theme rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative"
-                                        style="--ct-accent:#c4a265;--ct-font:'DM Sans',sans-serif;--ct-radius:16px;--ct-btn-radius:10px;--ct-bg:#111114;--ct-surface:#1a1a1e;--ct-text:#f0ede8;--ct-muted:#8a8780;--ct-border:#2a2a30;aspect-ratio:9/18;min-height:480px;">
-                                    </div>
+                    <div id="editorPreviewPanel" class="lg:w-[55%] relative flex-shrink-0 hidden lg:block"
+                        style="overflow:hidden;">
+                        <div class="h-full overflow-y-auto p-3 sm:p-4">
+                            <p class="text-muted text-xs font-semibold tracking-widest uppercase mb-3 text-center">Live
+                                Preview</p>
+                            <div class="max-w-sm mx-auto">
+                                <div id="editorPreview"
+                                    class="card-preview-theme rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative"
+                                    style="--ct-accent:#c4a265;--ct-font:'DM Sans',sans-serif;--ct-radius:16px;--ct-btn-radius:10px;--ct-bg:#111114;--ct-surface:#1a1a1e;--ct-text:#f0ede8;--ct-muted:#8a8780;--ct-border:#2a2a30;aspect-ratio:9/18;min-height:400px;">
                                 </div>
                             </div>
-                        </div>
-                        <!-- Settings Toggle -->
-                        <button id="settingsToggle"
-                            class="absolute bottom-4 right-4 z-30 w-11 h-11 bg-card border border-bdr rounded-xl flex items-center justify-center text-muted hover:text-gold hover:border-gold/30 transition-all shadow-lg"
-                            aria-label="Theme Settings"><i class="fa-solid fa-gear text-sm"></i></button>
-                        <!-- Settings Backdrop -->
-                        <div id="settingsBackdrop" class="absolute inset-0 bg-black/60 z-20 hidden cursor-pointer">
-                        </div>
-                        <!-- Settings Drawer -->
-                        <div id="settingsDrawer"
-                            class="settings-drawer absolute top-0 right-0 h-full w-72 bg-card border-l border-bdr z-30 overflow-y-auto p-5 flex-shrink-0">
-                            <div class="flex items-center justify-between mb-5">
-                                <h4 class="font-semibold text-sm">Theme Settings</h4><button id="settingsClose"
-                                    class="text-muted hover:text-txt transition-colors" aria-label="Close"><i
-                                        class="fa-solid fa-xmark"></i></button>
-                            </div>
-                            <!-- Accent Colors -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Accent Color
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-2" id="accentSwatches"></div>
-                                <div class="flex items-center gap-2 mt-2"><input type="color" id="accentPicker"
-                                        value="#c4a265"
-                                        class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
-                                        class="text-xs text-muted">Custom</span></div>
-                            </div>
-                            <!-- Font -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Font Family
-                                </p>
-                                <select id="fontPicker"
-                                    class="w-full px-3 py-2 bg-surface border border-bdr rounded-lg text-txt text-xs focus:outline-none focus:border-gold/50 cursor-pointer">
-                                    <option value="'DM Sans',sans-serif">DM Sans</option>
-                                    <option value="'Poppins',sans-serif">Poppins</option>
-                                    <option value="'Inter',sans-serif">Inter</option>
-                                    <option value="'Space Grotesk',sans-serif">Space Grotesk</option>
-                                    <option value="'Outfit',sans-serif">Outfit</option>
-                                    <option value="'Sora',sans-serif">Sora</option>
-                                    <option value="'Playfair Display',serif">Playfair Display</option>
-                                </select>
-                            </div>
-                            <!-- Border Radius -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Card Radius:
-                                    <span id="radiusVal">16</span>px
-                                </p>
-                                <input type="range" id="radiusSlider" min="0" max="32" value="16"
-                                    class="w-full accent-gold cursor-pointer">
-                            </div>
-                            <!-- Button Radius -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Button Radius:
-                                    <span id="btnRadiusVal">10</span>px
-                                </p>
-                                <input type="range" id="btnRadiusSlider" min="0" max="24" value="10"
-                                    class="w-full accent-gold cursor-pointer">
-                            </div>
-                            <!-- Theme Mode -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Theme Mode</p>
-                                <div class="flex gap-2">
-                                    <button
-                                        class="theme-mode-btn flex-1 py-2 rounded-lg text-xs font-medium border border-bdr transition-all"
-                                        data-mode="dark">Dark</button>
-                                    <button
-                                        class="theme-mode-btn flex-1 py-2 rounded-lg text-xs font-medium border border-bdr text-muted transition-all"
-                                        data-mode="light">Light</button>
-                                    <button
-                                        class="theme-mode-btn flex-1 py-2 rounded-lg text-xs font-medium border border-bdr text-muted transition-all"
-                                        data-mode="system">System</button>
-                                </div>
-                            </div>
-                            <!-- Background Color -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Background
-                                    Color</p>
-                                <div class="flex items-center gap-2"><input type="color" id="bgColorPicker"
-                                        value="#111114"
-                                        class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
-                                        class="text-xs text-muted" id="bgColorLabel">#111114</span></div>
-                            </div>
-                            <!-- Surface Color -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Surface Color
-                                </p>
-                                <div class="flex items-center gap-2"><input type="color" id="surfaceColorPicker"
-                                        value="#1a1a1e"
-                                        class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
-                                        class="text-xs text-muted" id="surfaceColorLabel">#1a1a1e</span></div>
-                            </div>
-                            <!-- Text Color -->
-                            <div class="mb-5">
-                                <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Text Color</p>
-                                <div class="flex items-center gap-2"><input type="color" id="textColorPicker"
-                                        value="#f0ede8"
-                                        class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
-                                        class="text-xs text-muted" id="textColorLabel">#f0ede8</span></div>
-                            </div>
-                            <!-- Reset -->
-                            <button onclick="resetThemeSettings()"
-                                class="w-full py-2.5 border border-bdr text-muted rounded-xl text-xs font-medium hover:border-gold/40 hover:text-txt transition-all mt-2"><i
-                                    class="fa-solid fa-rotate-left mr-1.5"></i>Reset to Default</button>
                         </div>
                     </div>
                 </div>
+
+                <!-- ALWAYS-VISIBLE BOTTOM ACTION BAR -->
+                <div
+                    class="flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-3 border-t border-bdr flex-shrink-0 bg-card">
+                    <button id="settingsToggle"
+                        class="w-10 h-10 bg-surface border border-bdr rounded-xl flex items-center justify-center text-muted hover:text-gold hover:border-gold/30 transition-all flex-shrink-0"
+                        aria-label="Theme Settings"><i class="fa-solid fa-gear text-sm"></i></button>
+                    <div class="flex-1"></div>
+                    <button onclick="closeModal('editorModal')"
+                        class="px-4 py-2.5 border border-bdr text-muted rounded-xl hover:border-gold/40 transition-all text-sm flex-shrink-0">Cancel</button>
+                    <button onclick="handlePublish()"
+                        class="btn-gold px-5 sm:px-7 py-2.5 bg-gold text-dark font-semibold rounded-xl hover:bg-gold-light transition-colors text-sm flex-shrink-0"><i
+                            class="fa-solid fa-rocket mr-1.5 sm:mr-2"></i>Publish</button>
+                </div>
+
+                <!-- Settings Drawer (positioned relative to modal-content, overlays everything) -->
+                <div id="settingsBackdrop" class="absolute inset-0 bg-black/60 z-20 hidden cursor-pointer"></div>
+                <div id="settingsDrawer"
+                    class="settings-drawer absolute top-0 right-0 h-full w-64 sm:w-72 bg-card border-l border-bdr z-30 overflow-y-auto p-4 sm:p-5 flex-shrink-0">
+                    <div class="flex items-center justify-between mb-5">
+                        <h4 class="font-semibold text-sm">Theme Settings</h4><button id="settingsClose"
+                            class="text-muted hover:text-txt transition-colors" aria-label="Close"><i
+                                class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Accent Color</p>
+                        <div class="flex flex-wrap gap-2 mb-2" id="accentSwatches"></div>
+                        <div class="flex items-center gap-2 mt-2"><input type="color" id="accentPicker" value="#c4a265"
+                                class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
+                                class="text-xs text-muted">Custom</span></div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Font Family</p><select
+                            id="fontPicker"
+                            class="w-full px-3 py-2 bg-surface border border-bdr rounded-lg text-txt text-xs focus:outline-none focus:border-gold/50 cursor-pointer">
+                            <option value="'DM Sans',sans-serif">DM Sans</option>
+                            <option value="'Poppins',sans-serif">Poppins</option>
+                            <option value="'Inter',sans-serif">Inter</option>
+                            <option value="'Space Grotesk',sans-serif">Space Grotesk</option>
+                            <option value="'Outfit',sans-serif">Outfit</option>
+                            <option value="'Sora',sans-serif">Sora</option>
+                            <option value="'Playfair Display',serif">Playfair Display</option>
+                        </select>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Card Radius: <span
+                                id="radiusVal">16</span>px</p><input type="range" id="radiusSlider" min="0" max="32"
+                            value="16" class="w-full accent-gold cursor-pointer">
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Button Radius: <span
+                                id="btnRadiusVal">10</span>px</p><input type="range" id="btnRadiusSlider" min="0"
+                            max="24" value="10" class="w-full accent-gold cursor-pointer">
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Theme Mode</p>
+                        <div class="flex gap-2"><button
+                                class="theme-mode-btn flex-1 py-2 rounded-lg text-xs font-medium border border-bdr bg-gold text-dark"
+                                data-mode="dark">Dark</button><button
+                                class="theme-mode-btn flex-1 py-2 rounded-lg text-xs font-medium border border-bdr text-muted"
+                                data-mode="light">Light</button><button
+                                class="theme-mode-btn flex-1 py-2 rounded-lg text-xs font-medium border border-bdr text-muted"
+                                data-mode="system">System</button></div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Background</p>
+                        <div class="flex items-center gap-2"><input type="color" id="bgColorPicker" value="#111114"
+                                class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
+                                class="text-xs text-muted" id="bgColorLabel">#111114</span></div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Surface</p>
+                        <div class="flex items-center gap-2"><input type="color" id="surfaceColorPicker" value="#1a1a1e"
+                                class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
+                                class="text-xs text-muted" id="surfaceColorLabel">#1a1a1e</span></div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Text Color</p>
+                        <div class="flex items-center gap-2"><input type="color" id="textColorPicker" value="#f0ede8"
+                                class="w-8 h-8 rounded-lg border-0 cursor-pointer bg-transparent"><span
+                                class="text-xs text-muted" id="textColorLabel">#f0ede8</span></div>
+                    </div>
+                    <button onclick="resetThemeSettings()"
+                        class="w-full py-2.5 border border-bdr text-muted rounded-xl text-xs font-medium hover:border-gold/40 hover:text-txt transition-all mt-2"><i
+                            class="fa-solid fa-rotate-left mr-1.5"></i>Reset to Default</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -1704,6 +1717,21 @@
 
         function updateSocialUrl(sid, val) { socialStates[sid].url = val; updatePreview(); }
 
+        /* ===== EDITOR MOBILE TABS ===== */
+        function switchEditorTab(tab) {
+            document.querySelectorAll('.editor-tab').forEach(function (t) { t.classList.remove('active'); });
+            document.querySelector('.editor-tab[data-edtab="' + tab + '"]').classList.add('active');
+            var form = document.getElementById('editorFormPanel');
+            var preview = document.getElementById('editorPreviewPanel');
+            if (tab === 'edit') {
+                form.classList.remove('hidden'); form.style.display = '';
+                preview.classList.add('hidden'); preview.style.display = 'none';
+            } else {
+                form.classList.add('hidden'); form.style.display = 'none';
+                preview.classList.remove('hidden'); preview.style.display = '';
+                updatePreview();
+            }
+        }
         /* ===== SETTINGS DRAWER ===== */
         function initSettingsDrawer() {
             var toggle = document.getElementById('settingsToggle');
@@ -1830,19 +1858,42 @@
         }
 
         /* ===== EDITOR ===== */
+        // function useTemplate(gi) {
+        //     currentEditTemplate = allTemplates[gi];
+        //     document.getElementById('editorTemplateName').textContent = currentEditTemplate.name + ' — ' + ((CATEGORIES.find(function (c) { return c.id === currentEditTemplate.category; }) || {}).name || '');
+        //     var banner = document.getElementById('trialBanner');
+        //     if (currentEditTemplate.premium) banner.classList.remove('hidden'); else banner.classList.add('hidden');
+        //     /* Reset photo */
+        //     uploadedPhotoSrc = null;
+        //     document.getElementById('photoPreviewThumb').style.display = 'none';
+        //     document.getElementById('uploadPlaceholder').style.display = '';
+        //     document.getElementById('photoFileInput').value = '';
+        //     /* Reset social */
+        //     SOCIAL_PLATFORMS.forEach(function (p) { socialStates[p.id] = { on: false, url: '' }; });
+        //     renderSocialFields();
+        //     updatePreview();
+        //     openModal('editorModal');
+        // }
         function useTemplate(gi) {
             currentEditTemplate = allTemplates[gi];
             document.getElementById('editorTemplateName').textContent = currentEditTemplate.name + ' — ' + ((CATEGORIES.find(function (c) { return c.id === currentEditTemplate.category; }) || {}).name || '');
             var banner = document.getElementById('trialBanner');
             if (currentEditTemplate.premium) banner.classList.remove('hidden'); else banner.classList.add('hidden');
-            /* Reset photo */
             uploadedPhotoSrc = null;
             document.getElementById('photoPreviewThumb').style.display = 'none';
             document.getElementById('uploadPlaceholder').style.display = '';
             document.getElementById('photoFileInput').value = '';
-            /* Reset social */
             SOCIAL_PLATFORMS.forEach(function (p) { socialStates[p.id] = { on: false, url: '' }; });
             renderSocialFields();
+            /* Mobile: start on Edit tab. Desktop: show both side by side */
+            if (window.innerWidth >= 1024) {
+                document.getElementById('editorFormPanel').classList.remove('hidden');
+                document.getElementById('editorFormPanel').style.display = '';
+                document.getElementById('editorPreviewPanel').classList.remove('hidden');
+                document.getElementById('editorPreviewPanel').style.display = '';
+            } else {
+                switchEditorTab('edit');
+            }
             updatePreview();
             openModal('editorModal');
         }
