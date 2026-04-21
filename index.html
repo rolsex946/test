@@ -142,6 +142,19 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* .whatsapp-widget {
+            transform: translateY(20px) scale(0.9);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .whatsapp-trigger:hover .whatsapp-widget {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        } */
+
         .whatsapp-widget {
             transform: translateY(20px) scale(0.9);
             opacity: 0;
@@ -153,6 +166,20 @@
             transform: translateY(0) scale(1);
             opacity: 1;
             pointer-events: auto;
+        }
+
+        .whatsapp-trigger.widget-open .whatsapp-widget {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-trigger:hover .whatsapp-widget {
+                transform: translateY(20px) scale(0.9);
+                opacity: 0;
+                pointer-events: none;
+            }
         }
 
         .pulse-ring {
@@ -2324,7 +2351,7 @@
     </div>
 
     <!-- ==================== GLOBAL FOOTER ==================== -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8 px-4">
+    <footer class="pt-16 pb-8 px-4" style="background-color: #581626; color: #fff;">
         <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-4 gap-10 mb-12">
                 <div class="md:col-span-2">
@@ -2713,6 +2740,19 @@
         //         navigateTo(hash);
         //     }
         // });
+        // ---- WhatsApp widget tap toggle for mobile ----
+        const waTrigger = document.querySelector('.whatsapp-trigger');
+        if (waTrigger) {
+            waTrigger.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768) {
+                    e.stopPropagation();
+                    this.classList.toggle('widget-open');
+                }
+            });
+            document.addEventListener('click', function () {
+                waTrigger.classList.remove('widget-open');
+            });
+        }
     </script>
 </body>
 
