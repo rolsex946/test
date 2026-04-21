@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mohul — Premium Bridal & Party Makeup Artist | Bankura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rose: { 50: '#FFF5F5', 100: '#FFE0E0', 200: '#FFBABA', 300: '#FF8A8A', 400: '#E84663', 500: '#C73659', 600: '#A02A47', 700: '#8B1A3A', 800: '#6B1230', 900: '#4A0D20' },
+                        gold: { 50: '#FDF8F0', 100: '#F9EDDA', 200: '#F0D5A8', 300: '#E5BC76', 400: '#D4A55A', 500: '#C9A96E', 600: '#B08D4F', 700: '#8C6F3D', 800: '#6B5530', 900: '#4A3B21' },
+                        warm: { 50: '#FFFAF7', 100: '#FFF5EE', 200: '#FFE8D6', 300: '#FFD4B0', 400: '#FFB98A', 500: '#FF9A60' }
+                    },
+                    fontFamily: { inter: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #C9A96E, #E84663);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(139, 26, 58, 0.7) 0%, rgba(74, 13, 32, 0.5) 50%, rgba(201, 169, 110, 0.3) 100%);
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #C9A96E, #E5BC76, #C9A96E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(139, 26, 58, 0.15);
+        }
+
+        .img-zoom {
+            overflow: hidden;
+        }
+
+        .img-zoom img {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .img-zoom:hover img {
+            transform: scale(1.08);
+        }
+
+        .ba-slider {
+            position: relative;
+            overflow: hidden;
+            cursor: ew-resize;
+        }
+
+        .ba-slider .ba-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .ba-slider .ba-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #C9A96E;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .ba-slider .ba-handle::after {
+            content: '⟨ ⟩';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: #C9A96E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-widget {
+            transform: translateY(20px) scale(0.9);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .whatsapp-trigger:hover .whatsapp-widget {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-delay-100 {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .animate-delay-200 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .animate-delay-300 {
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .animate-delay-400 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .gallery-filter .filter-btn.active {
+            background: linear-gradient(135deg, #8B1A3A, #C73659);
+            color: #fff;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FFF5F5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#C9A96E, #E84663);
+            border-radius: 3px;
+        }
+
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-warm-50 text-gray-800">
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="toast fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] bg-rose-700 text-white px-6 py-3 rounded-full shadow-xl text-sm font-medium flex items-center gap-2">
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span id="toast-msg">Message sent!</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-700 to-gold-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        M</div>
+                    <div>
+                        <span class="text-xl font-semibold tracking-tight nav-logo-text">The Mohul</span>
+                        <span class="block text-[10px] tracking-[0.2em] uppercase nav-logo-sub text-gray-400">Makeup
+                            Studio</span>
+                    </div>
+                </a>
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#" onclick="navigateTo('home')" class="nav-link text-sm font-medium nav-text-color active"
+                        data-page="home">Home</a>
+                    <a href="#" onclick="navigateTo('portfolio')" class="nav-link text-sm font-medium nav-text-color"
+                        data-page="portfolio">Portfolio</a>
+                    <a href="#" onclick="navigateTo('before-after')" class="nav-link text-sm font-medium nav-text-color"
+                        data-page="before-after">Before & After</a>
+                    <a href="#" onclick="navigateTo('services')" class="nav-link text-sm font-medium nav-text-color"
+                        data-page="services">Services</a>
+                    <a href="#" onclick="navigateTo('about')" class="nav-link text-sm font-medium nav-text-color"
+                        data-page="about">About</a>
+                    <a href="#" onclick="navigateTo('testimonials')" class="nav-link text-sm font-medium nav-text-color"
+                        data-page="testimonials">Reviews</a>
+                    <a href="#" onclick="navigateTo('contact')" class="nav-link text-sm font-medium nav-text-color"
+                        data-page="contact">Contact</a>
+                    <a href="#" onclick="navigateTo('faq')" class="nav-link text-sm font-medium nav-text-color"
+                        data-page="faq">FAQ</a>
+                </div>
+                <!-- CTA + Mobile Toggle -->
+                <div class="flex items-center gap-3">
+                    <a href="https://wa.me/917980203100?text=Hi%20The%20Mohul!%20I%20want%20to%20book%20a%20makeup%20session."
+                        target="_blank"
+                        class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-rose-700 to-rose-600 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-rose-700/25 transition-all duration-300">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> Book Now
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition">
+                        <i data-lucide="menu" class="w-6 h-6 nav-text-color" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="overlay fixed inset-0 bg-black/50 z-40" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-2xl overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-lg font-semibold text-rose-800">Menu</span>
+                <button onclick="toggleMobileMenu()" class="p-2 hover:bg-gray-100 rounded-lg transition"><i
+                        data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="space-y-1">
+                <a href="#" onclick="navigateTo('home');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Home</a>
+                <a href="#" onclick="navigateTo('portfolio');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Portfolio</a>
+                <a href="#" onclick="navigateTo('before-after');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Before &
+                    After</a>
+                <a href="#" onclick="navigateTo('services');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Services &
+                    Pricing</a>
+                <a href="#" onclick="navigateTo('about');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">About &
+                    Certifications</a>
+                <a href="#" onclick="navigateTo('products');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Products We
+                    Use</a>
+                <a href="#" onclick="navigateTo('booking');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Booking
+                    Process</a>
+                <a href="#" onclick="navigateTo('testimonials');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Client
+                    Reviews</a>
+                <a href="#" onclick="navigateTo('contact');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Contact &
+                    Location</a>
+                <a href="#" onclick="navigateTo('faq');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">FAQ</a>
+                <a href="#" onclick="navigateTo('hygiene');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Hygiene &
+                    Safety</a>
+                <a href="#" onclick="navigateTo('social-proof');toggleMobileMenu()"
+                    class="block px-4 py-3 rounded-lg hover:bg-rose-50 text-gray-700 font-medium transition">Social
+                    Feed</a>
+                <div class="pt-4 mt-4 border-t border-gray-100 space-y-1">
+                    <a href="#" onclick="navigateTo('privacy');toggleMobileMenu()"
+                        class="block px-4 py-2 text-sm text-gray-400 hover:text-gray-600 transition">Privacy Policy</a>
+                    <a href="#" onclick="navigateTo('terms');toggleMobileMenu()"
+                        class="block px-4 py-2 text-sm text-gray-400 hover:text-gray-600 transition">Terms &
+                        Conditions</a>
+                    <a href="#" onclick="navigateTo('refund');toggleMobileMenu()"
+                        class="block px-4 py-2 text-sm text-gray-400 hover:text-gray-600 transition">Refund Policy</a>
+                </div>
+            </div>
+            <div class="mt-8">
+                <a href="https://wa.me/917980203100" target="_blank"
+                    class="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-rose-700 to-rose-600 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Widget -->
+    <div class="whatsapp-trigger fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        <div class="whatsapp-widget bg-white rounded-2xl shadow-2xl p-5 w-72 border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="font-semibold text-sm text-gray-800">The Mohul</p>
+                    <p class="text-xs text-green-600">Online now</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-500 mb-4">Hi! 👋 Need help with bridal or party makeup? Chat with us instantly.
+            </p>
+            <a href="https://wa.me/917980203100?text=Hi%20The%20Mohul!%20I%20want%20to%20know%20about%20your%20makeup%20services."
+                target="_blank"
+                class="block w-full bg-green-500 text-white text-center py-2.5 rounded-xl text-sm font-medium hover:bg-green-600 transition">Start
+                Chat</a>
+        </div>
+        <div class="relative">
+            <div class="absolute inset-0 bg-green-500 rounded-full pulse-ring"></div>
+            <a href="https://wa.me/917980203100" target="_blank"
+                class="relative flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <div id="page-home" class="page active">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <!-- "https://t4.ftcdn.net/jpg/02/44/16/37/360_F_244163733_ErNyvrHfOJcRlHd7t3doQcs4bEgclAfq.jpg" -->
+                <img src="https://makeupstudioindia.in/wp-content/uploads/2023/06/6-1-2.jpg"
+                    alt="Bridal Makeup by The Mohul" class="w-full h-full object-cover">
+                <div class="hero-gradient absolute inset-0"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+            </div>
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
+                <div class="animate-fade-in-up">
+                    <span
+                        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 px-4 py-2 rounded-full text-xs font-medium tracking-wider uppercase mb-6">
+                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
+                        Premium Bridal Makeup Specialist
+                    </span>
+                </div>
+                <h1
+                    class="animate-fade-in-up animate-delay-100 text-4xl sm:text-5xl md:text-7xl font-semibold text-white leading-[1.1] tracking-tight mb-6">
+                    Flawless Makeup for<br>
+                    <span class="gold-gradient">Your Most Beautiful Day</span>
+                </h1>
+                <p
+                    class="animate-fade-in-up animate-delay-200 text-lg sm:text-xl text-white/80 font-light max-w-2xl mx-auto mb-4">
+                    Specializing in long-lasting bridal & party makeup for humid Indian weddings — based in Bankura,
+                    serving all of West Bengal.
+                </p>
+                <p class="animate-fade-in-up animate-delay-200 text-sm text-gold-300 font-medium mb-10">
+                    500+ Brides Styled • 8+ Years Experience • Bankura's Trusted Name
+                </p>
+                <div
+                    class="animate-fade-in-up animate-delay-300 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20book%20bridal%20makeup.%20Please%20share%20availability."
+                        target="_blank"
+                        class="inline-flex items-center gap-2 bg-white text-rose-800 px-8 py-4 rounded-full font-semibold text-sm hover:bg-gold-50 hover:scale-105 transition-all duration-300 shadow-xl">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        Book via WhatsApp
+                    </a>
+                    <a href="#" onclick="navigateTo('portfolio')"
+                        class="inline-flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-white/10 hover:border-white/50 transition-all duration-300">
+                        View Portfolio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+                <i data-lucide="chevron-down" class="w-6 h-6 text-white/50"></i>
+            </div>
+        </section>
+
+        <!-- Value Proposition -->
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Why Choose
+                        The Mohul</span>
+                    <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Bridal Makeup That
+                        Actually <span class="text-rose-600">Lasts</span></h2>
+                    <p class="mt-4 text-gray-500 max-w-xl mx-auto">Designed specifically for Indian weddings — heat,
+                        humidity, tears, and 12+ hours of dancing included.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 text-center">
+                        <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                            <i data-lucide="clock" class="w-7 h-7 text-rose-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">12+ Hour Durability</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">Specialized techniques and products that keep
+                            your makeup intact from mandap to reception, even in humid conditions.</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 text-center">
+                        <div class="w-14 h-14 bg-gold-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                            <i data-lucide="sparkles" class="w-7 h-7 text-gold-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">HD & Camera Ready</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">Every look is optimized for photography and
+                            videography — no white cast, no flashback, just flawless skin on camera.</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 text-center">
+                        <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                            <i data-lucide="shield-check" class="w-7 h-7 text-rose-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">100% Hygienic</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">Fresh disposables for every client, sanitized
+                            brushes, and premium products — your safety is never compromised.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Work Preview -->
+        <section class="py-20 px-4 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Selected
+                            Work</span>
+                        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Recent Bridal Looks
+                        </h2>
+                    </div>
+                    <a href="#" onclick="navigateTo('portfolio')"
+                        class="hidden sm:inline-flex items-center gap-1 text-rose-600 font-medium text-sm hover:gap-2 transition-all">
+                        View All <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4]"><img
+                            src="https://i.pinimg.com/originals/2f/a1/4c/2fa14c4153aa017985532c54a0200041.jpg"
+                            alt="Bridal Look" class="w-full h-full object-cover"></div>
+                    <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-8"><img
+                            src="https://i.pinimg.com/736x/8b/21/58/8b2158cd7a711190103429859ff53444.jpg"
+                            alt="Bridal Look" class="w-full h-full object-cover"></div>
+                    <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4]"><img
+                            src="https://image.wedmegood.com/resized/450X/uploads/project/240987/1679499002_IMG_20230322_205843.jpg"
+                            alt="Bridal Look" class="w-full h-full object-cover"></div>
+                    <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-8"><img
+                            src="https://cdn0.weddingwire.in/article/0720/original/1280/jpg/130270-bengali-bridal-look-tapatis-makeover.jpeg"
+                            alt="Bridal Look" class="w-full h-full object-cover"></div>
+                </div>
+                <div class="text-center mt-8 sm:hidden">
+                    <a href="#" onclick="navigateTo('portfolio')"
+                        class="inline-flex items-center gap-1 text-rose-600 font-medium text-sm">View Full Portfolio <i
+                            data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Quick -->
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Our
+                        Services</span>
+                    <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">What We Offer</h2>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+                        <div class="aspect-[4/3] img-zoom"><img
+                                src="https://www.k4fashion.com/wp-content/uploads/2021/11/bengali-bridal-makeup-3.jpg"
+                                alt="Bridal Makeup" class="w-full h-full object-cover"></div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-gray-900">Bridal Makeup</h3>
+                            <p class="text-xs text-gray-400 mt-1">Starts from ₹7,000</p>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+                        <div class="aspect-[4/3] img-zoom"><img
+                                src="https://i.pinimg.com/originals/ac/65/0a/ac650acce5cdef7ea8368fee935deee6.jpg"
+                                alt="Party Makeup" class="w-full h-full object-cover"></div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-gray-900">Party & Event</h3>
+                            <p class="text-xs text-gray-400 mt-1">Starts from ₹2,500</p>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+                        <div class="aspect-[4/3] img-zoom"><img
+                                src="https://lyrabeauty.in/wp-content/uploads/2025/12/hd-engagement-makeup-bride-varanasi-scaled-e1766433322224-1230x2048.png"
+                                alt="Engagement Makeup" class="w-full h-full object-cover"></div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-gray-900">Engagement Look</h3>
+                            <p class="text-xs text-gray-400 mt-1">Starts from ₹4,000</p>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+                        <div class="aspect-[4/3] img-zoom"><img
+                                src="https://cdn.shopify.com/s/files/1/0139/2302/4944/files/website_copy_2d30ab56-62e7-4b73-8497-ea34395b887a.jpg?v=1633116360"
+                                alt="HD Makeup" class="w-full h-full object-cover"></div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-gray-900">HD & Airbrush</h3>
+                            <p class="text-xs text-gray-400 mt-1">Starts from ₹5,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <a href="#services" onclick="navigateTo('services')"
+                        class="inline-flex items-center gap-2 bg-gradient-to-r from-rose-700 to-rose-600 text-white px-8 py-3.5 rounded-full font-medium text-sm hover:shadow-lg hover:shadow-rose-700/25 transition-all duration-300">
+                        View All Services & Pricing <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Quick -->
+        <section class="py-20 px-4 bg-rose-800 text-white relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-96 h-96 bg-gold-400 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-rose-400 rounded-full blur-[120px]"></div>
+            </div>
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-300 mb-3 block">Trusted by
+                        Brides</span>
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">What Our Brides Say</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                        <div class="flex gap-1 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                        </div>
+                        <p class="text-sm text-white/80 leading-relaxed mb-4">"My makeup lasted 14 hours straight in
+                            June heat! Every photo came out perfect. The Mohul truly understands bridal needs."</p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://picsum.photos/seed/client-priya/80/80.jpg" alt="Priya"
+                                class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-medium text-sm">Priya Dutta</p>
+                                <p class="text-xs text-white/50">Bride, Bankura</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                        <div class="flex gap-1 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                        </div>
+                        <p class="text-sm text-white/80 leading-relaxed mb-4">"Best decision I made for my wedding! The
+                            trial session was so helpful. She exactly understood the look I wanted."</p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://picsum.photos/seed/client-anjali/80/80.jpg" alt="Anjali"
+                                class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-medium text-sm">Anjali Mukherjee</p>
+                                <p class="text-xs text-white/50">Bride, Durgapur</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                        <div class="flex gap-1 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-gold-400 text-gold-400"></i>
+                        </div>
+                        <p class="text-sm text-white/80 leading-relaxed mb-4">"Booked her for my sister's wedding too
+                            after seeing my results. Professional, punctual, and incredibly talented!"</p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://picsum.photos/seed/client-sneha/80/80.jpg" alt="Sneha"
+                                class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-medium text-sm">Sneha Roy</p>
+                                <p class="text-xs text-white/50">Bride, Asansol</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <a href="#" onclick="navigateTo('testimonials')"
+                        class="inline-flex items-center gap-2 border-2 border-white/30 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 transition-all">Read
+                        All Reviews <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="py-16 px-4 bg-white">
+            <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-3xl md:text-4xl font-bold text-rose-700">500+</p>
+                    <p class="text-sm text-gray-500 mt-1">Brides Styled</p>
+                </div>
+                <div>
+                    <p class="text-3xl md:text-4xl font-bold text-rose-700">8+</p>
+                    <p class="text-sm text-gray-500 mt-1">Years Experience</p>
+                </div>
+                <div>
+                    <p class="text-3xl md:text-4xl font-bold text-rose-700">4.9</p>
+                    <p class="text-sm text-gray-500 mt-1">Justdial Rating</p>
+                </div>
+                <div>
+                    <p class="text-3xl md:text-4xl font-bold text-rose-700">50+</p>
+                    <p class="text-sm text-gray-500 mt-1">Venue Visits</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div
+                    class="bg-gradient-to-br from-rose-800 via-rose-700 to-rose-900 rounded-3xl p-10 md:p-16 relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-20">
+                        <div class="absolute top-0 right-0 w-72 h-72 bg-gold-400 rounded-full blur-[100px]"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">Your Dream Look Is
+                            One Message Away</h2>
+                        <p class="text-white/70 mb-8 max-w-lg mx-auto">Limited slots available for the upcoming wedding
+                            season. Don't wait — secure your date now.</p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20check%20availability%20for%20my%20wedding%20date."
+                                target="_blank"
+                                class="inline-flex items-center gap-2 bg-white text-rose-800 px-8 py-4 rounded-full font-semibold text-sm hover:scale-105 transition-all duration-300 shadow-xl">
+                                Check Availability <i data-lucide="calendar" class="w-4 h-4"></i>
+                            </a>
+                            <a href="tel:+917980203100"
+                                class="inline-flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-white/10 transition-all">
+                                <i data-lucide="phone" class="w-4 h-4"></i> Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <!-- <footer class="bg-gray-900 text-white pt-16 pb-8 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-4 gap-10 mb-12">
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-600 to-gold-500 flex items-center justify-center text-white font-bold">
+                                M</div>
+                            <div>
+                                <span class="text-lg font-semibold">The Mohul</span>
+                                <span class="block text-[10px] tracking-[0.2em] uppercase text-gray-500">Makeup
+                                    Studio</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed max-w-sm mb-4">Premium bridal & party makeup
+                            services in Bankura, West Bengal. Trusted by 500+ brides for flawless, long-lasting looks.
+                        </p>
+                        <p class="text-sm text-gray-500"><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i>
+                            Jhantipahari, Bankura, West Bengal</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-sm mb-4">Quick Links</h4>
+                        <div class="space-y-2">
+                            <a href="#" onclick="navigateTo('portfolio')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">Portfolio</a>
+                            <a href="#" onclick="navigateTo('services')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">Services</a>
+                            <a href="#" onclick="navigateTo('about')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">About</a>
+                            <a href="#" onclick="navigateTo('contact')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">Contact</a>
+                            <a href="#" onclick="navigateTo('faq')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">FAQ</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-sm mb-4">Policies</h4>
+                        <div class="space-y-2">
+                            <a href="#" onclick="navigateTo('privacy')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">Privacy Policy</a>
+                            <a href="#" onclick="navigateTo('terms')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">Terms &
+                                Conditions</a>
+                            <a href="#" onclick="navigateTo('refund')"
+                                class="block text-sm text-gray-400 hover:text-gold-400 transition">Refund Policy</a>
+                        </div>
+                        <h4 class="font-semibold text-sm mt-6 mb-3">Follow Us</h4>
+                        <div class="flex gap-3">
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-500 transition"><i
+                                    data-lucide="instagram" class="w-4 h-4"></i></a>
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-500 transition"><i
+                                    data-lucide="facebook" class="w-4 h-4"></i></a>
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-500 transition"><i
+                                    data-lucide="youtube" class="w-4 h-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+                    <p class="text-xs text-gray-500">© 2025 The Mohul Makeup Studio. All rights reserved.</p>
+                    <p class="text-xs text-gray-500">Listed on <span class="text-gold-400">Justdial</span> ★ 4.9 Rating
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div> -->
+    </div> <!-- end of page-refund -->
+
+    </div> <!-- end of page-refund section -->
+    </section>
+    </div>
+    <!-- end of page-refund -->
+
+
+    <!-- ==================== PORTFOLIO PAGE ==================== -->
+    <div id="page-portfolio" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Our
+                        Work</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Portfolio</h1>
+                    <p class="mt-3 text-gray-500 max-w-xl mx-auto">Every face tells a story. Here are some of our
+                        favorites — organized by category so you find exactly what you need.</p>
+                </div>
+                <!-- Filters -->
+                <div class="gallery-filter flex flex-wrap justify-center gap-2 mb-12">
+                    <button onclick="filterGallery('all')"
+                        class="filter-btn active px-5 py-2 rounded-full text-sm font-medium border border-gray-200 bg-white text-gray-600 hover:border-rose-300 transition-all">All</button>
+                    <button onclick="filterGallery('bridal')"
+                        class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-gray-200 bg-white text-gray-600 hover:border-rose-300 transition-all">Bridal</button>
+                    <button onclick="filterGallery('engagement')"
+                        class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-gray-200 bg-white text-gray-600 hover:border-rose-300 transition-all">Engagement</button>
+                    <button onclick="filterGallery('party')"
+                        class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-gray-200 bg-white text-gray-600 hover:border-rose-300 transition-all">Party</button>
+                    <button onclick="filterGallery('hd')"
+                        class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-gray-200 bg-white text-gray-600 hover:border-rose-300 transition-all">HD
+                        / Airbrush</button>
+                    <button onclick="filterGallery('editorial')"
+                        class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-gray-200 bg-white text-gray-600 hover:border-rose-300 transition-all">Editorial</button>
+                </div>
+                <!-- Gallery Grid -->
+                <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="gallery-item bridal img-zoom rounded-2xl overflow-hidden aspect-[3/4]"
+                        data-cat="bridal"><img src="https://www.bodycraft.co.in/hubfs/unnamed%20(17)-3.png" alt="Bridal"
+                            class="w-full h-full object-cover"></div>
+                    <div class="gallery-item party img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-6"
+                        data-cat="party"><img
+                            src="https://i.pinimg.com/236x/cc/54/9b/cc549b0519978c0f6669194588edc13d.jpg" alt="Party"
+                            class="w-full h-full object-cover"></div>
+                    <div class="gallery-item bridal img-zoom rounded-2xl overflow-hidden aspect-[3/4]"
+                        data-cat="bridal"><img
+                            src="https://bridal-makeup.in//images/spsimpleportfolio/bridal-makeup-5/k1-bridal-makeup-thane_600x800.jpg?width=500&height=750"
+                            alt="Bridal" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item engagement img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-6"
+                        data-cat="engagement"><img
+                            src="https://lyrabeauty.in/wp-content/uploads/2025/12/advanced-hd-engagement-makeup-varanasi-1238x2048.png"
+                            alt="Engagement" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item hd img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-6"
+                        data-cat="hd"><img
+                            src="https://thumbs.dreamstime.com/b/magnificent-young-indian-bride-luxurious-bridal-costume-makeup-heavy-jewellery-sitting-chair-classic-vintage-212508344.jpg"
+                            alt="HD" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item editorial img-zoom rounded-2xl overflow-hidden aspect-[3/4]"
+                        data-cat="editorial"><img
+                            src="https://www.famekeeda.com/blogs/content/images/2025/07/Once-upon-a-time-we-used-to-get-ready-...------..What-are-you-missing-the-most-in-this-lockdown-.jpg"
+                            alt="Editorial" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item bridal img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-6"
+                        data-cat="bridal"><img
+                            src="https://i.pinimg.com/originals/2f/a1/4c/2fa14c4153aa017985532c54a0200041.jpg"
+                            alt="Bridal" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item party img-zoom rounded-2xl overflow-hidden aspect-[3/4]" data-cat="party">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJgar-Z__pStK-GJFirSXGT_C84ozkAtConw&s"
+                            alt="Party" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item engagement img-zoom rounded-2xl overflow-hidden aspect-[3/4]"
+                        data-cat="engagement"><img
+                            src="https://artistrybypranisha.in/wp-content/uploads/2024/05/0L3A7934-scaled.jpg"
+                            alt="Engagement" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item hd img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-6"
+                        data-cat="hd"><img
+                            src="https://lh3.googleusercontent.com/ujGY1L2SVwTVRHNtBPkp5ExC0dg_8Ej8bx14PtXTW5QfbCqfDNe8N5nXLYcjSrbJGSbwsDZ1FGpzOaClIbeHSvKDLl-LIu3NoeceE4eMx0dK1hzFQGGWB0XqzmTcGPb_RqrhFWa8Me3Ue0opdw"
+                            alt="HD" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item bridal img-zoom rounded-2xl overflow-hidden aspect-[3/4]"
+                        data-cat="bridal"><img
+                            src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpILVp-9Nhzkpkb3I4OcQGR-lDQK-4AoPSZA&s"
+                            alt="Bridal" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item editorial img-zoom rounded-2xl overflow-hidden aspect-[3/4] md:mt-6"
+                        data-cat="editorial"><img
+                            src="https://assets.vogue.in/photos/5ce42ae7b803115b388f6cfd/2:3/w_2560%2Cc_limit/All-the-different-types-of-Indian-bridal-makeup..jpgg"
+                            alt="Editorial" class="w-full h-full object-cover"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== BEFORE & AFTER PAGE ==================== -->
+    <div id="page-before-after" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Real
+                        Results</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Before & After</h1>
+                    <p class="mt-3 text-gray-500 max-w-xl mx-auto">No filters. No edits. These are real
+                        transformations.
+                        Drag the slider to see the difference.</p>
+                </div>
+                <div class="space-y-10">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 mb-3 text-center">Bridal Transformation —
+                            Traditional Bengali Look</p>
+                        <div class="ba-slider rounded-2xl aspect-[4/3] relative" onmousedown="startSlide(event,this)"
+                            ontouchstart="startSlide(event,this)">
+                            <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop&q=80"
+                                alt="Before" class="w-full h-full object-cover">
+                            <div class="ba-after">
+                                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop&q=80"
+                                    alt="After" class="w-full h-full object-cover"
+                                    style="width: calc(800 / 0.5 * 1px); max-width:none; position:absolute; top:0; left:0; height:100%;">
+                            </div>
+                            <div class="ba-handle"></div>
+                            <span
+                                class="absolute top-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full">Before</span>
+                            <span
+                                class="absolute top-4 right-4 bg-rose-700/90 text-white text-xs px-3 py-1 rounded-full">After</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 mb-3 text-center">Party Glam — Dewy Skin Look
+                        </p>
+                        <div class="ba-slider rounded-2xl aspect-[4/3] relative" onmousedown="startSlide(event,this)"
+                            ontouchstart="startSlide(event,this)">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop&q=80"
+                                alt="Before" class="w-full h-full object-cover">
+                            <div class="ba-after">
+                                <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop&q=80"
+                                    alt="After" class="w-full h-full object-cover"
+                                    style="width: calc(800 / 0.5 * 1px); max-width:none; position:absolute; top:0; left:0; height:100%;">
+                            </div>
+                            <div class="ba-handle"></div>
+                            <span
+                                class="absolute top-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full">Before</span>
+                            <span
+                                class="absolute top-4 right-4 bg-rose-700/90 text-white text-xs px-3 py-1 rounded-full">After</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 mb-3 text-center">HD Airbrush — Flawless Finish
+                        </p>
+                        <div class="ba-slider rounded-2xl aspect-[4/3] relative" onmousedown="startSlide(event,this)"
+                            ontouchstart="startSlide(event,this)">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop&q=80"
+                                alt="Before" class="w-full h-full object-cover">
+                            <div class="ba-after">
+                                <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=400&fit=crop&q=80"
+                                    alt="After" class="w-full h-full object-cover"
+                                    style="width: calc(800 / 0.5 * 1px); max-width:none; position:absolute; top:0; left:0; height:100%;">
+                            </div>
+                            <div class="ba-handle"></div>
+                            <span
+                                class="absolute top-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full">Before</span>
+                            <span
+                                class="absolute top-4 right-4 bg-rose-700/90 text-white text-xs px-3 py-1 rounded-full">After</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="https://wa.me/917980203100?text=Hi!%20I%20saw%20your%20before%20%26%20after%20work%20and%20want%20to%20book%20a%20session."
+                        target="_blank"
+                        class="inline-flex items-center gap-2 bg-gradient-to-r from-rose-700 to-rose-600 text-white px-8 py-3.5 rounded-full font-medium text-sm hover:shadow-lg transition-all">Get
+                        This Look <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== SERVICES PAGE ==================== -->
+    <div id="page-services" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Transparent
+                        Pricing</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Services & Pricing
+                    </h1>
+                    <p class="mt-3 text-gray-500 max-w-xl mx-auto">No hidden charges. No vague "packages available."
+                        Here's exactly what you get and what it costs.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Bridal Package -->
+                    <div class="card-hover bg-white rounded-2xl border-2 border-rose-200 p-8 relative overflow-hidden">
+                        <div
+                            class="absolute top-4 right-4 bg-rose-700 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            MOST POPULAR</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Bridal Makeup Package</h3>
+                        <p class="text-sm text-gray-500 mb-4">Complete bridal look with pre-bridal skin prep</p>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-3xl font-bold text-rose-700">₹7,000</span>
+                            <span class="text-sm text-gray-400">onwards</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0"></i> HD / Airbrush foundation
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0"></i> Eye makeup
+                                (smokey/natural
+                                as per choice)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0"></i> Lip colour + touch-up
+                                kit
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0"></i> Hairstyling (bun/loose
+                                curls)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0"></i> Draping assistance
+                                (sari/lehenga)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0"></i> 12+ hour durability
+                                guarantee</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0"></i> Setting spray + touch-up
+                                pouch</li>
+                        </ul>
+                        <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20book%20the%20Bridal%20Makeup%20Package."
+                            target="_blank"
+                            class="block w-full text-center bg-rose-700 text-white py-3.5 rounded-xl font-medium text-sm hover:bg-rose-800 transition">Book
+                            This Package</a>
+                    </div>
+                    <!-- Engagement -->
+                    <div class="card-hover bg-white rounded-2xl border border-gray-200 p-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Engagement Makeup</h3>
+                        <p class="text-sm text-gray-500 mb-4">Glamorous look for your ring ceremony</p>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-3xl font-bold text-rose-700">₹4,000</span>
+                            <span class="text-sm text-gray-400">onwards</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> HD foundation base</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Glitter/glam eye makeup
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Hairstyling</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Draping assistance</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Touch-up kit included
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20book%20the%20Engagement%20Makeup%20Package."
+                            target="_blank"
+                            class="block w-full text-center border-2 border-rose-200 text-rose-700 py-3.5 rounded-xl font-medium text-sm hover:bg-rose-50 transition">Book
+                            This Package</a>
+                    </div>
+                    <!-- Reception -->
+                    <div class="card-hover bg-white rounded-2xl border border-gray-200 p-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Reception Look</h3>
+                        <p class="text-sm text-gray-500 mb-4">Modern, elegant look for the reception night</p>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-3xl font-bold text-rose-700">₹5,000</span>
+                            <span class="text-sm text-gray-400">onwards</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Airbrush or HD base</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Contouring +
+                                highlighting
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Hairstyling +
+                                accessories
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Long-lasting setting
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Touch-up pouch</li>
+                        </ul>
+                        <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20book%20the%20Reception%20Makeup%20Package."
+                            target="_blank"
+                            class="block w-full text-center border-2 border-rose-200 text-rose-700 py-3.5 rounded-xl font-medium text-sm hover:bg-rose-50 transition">Book
+                            This Package</a>
+                    </div>
+                    <!-- Party -->
+                    <div class="card-hover bg-white rounded-2xl border border-gray-200 p-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Party & Event Makeup</h3>
+                        <p class="text-sm text-gray-500 mb-4">Perfect for birthdays, anniversaries, puja, and
+                            celebrations</p>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-3xl font-bold text-rose-700">₹2,500</span>
+                            <span class="text-sm text-gray-400">onwards</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Foundation + concealer
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Eye + lip makeup</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Basic hairstyling</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><i data-lucide="check"
+                                    class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Setting spray</li>
+                        </ul>
+                        <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20book%20Party%20Makeup."
+                            target="_blank"
+                            class="block w-full text-center border-2 border-rose-200 text-rose-700 py-3.5 rounded-xl font-medium text-sm hover:bg-rose-50 transition">Book
+                            This Package</a>
+                    </div>
+                    <!-- Family Package -->
+                    <div class="card-hover bg-white rounded-2xl border border-gray-200 p-8 md:col-span-2">
+                        <div class="md:flex md:items-start md:justify-between">
+                            <div class="mb-6 md:mb-0">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-1">Family / Group Package</h3>
+                                <p class="text-sm text-gray-500 mb-4">Bride's mother, sister, friends — get everyone
+                                    wedding-ready together</p>
+                                <div class="flex items-baseline gap-1 mb-4">
+                                    <span class="text-3xl font-bold text-rose-700">₹2,000</span>
+                                    <span class="text-sm text-gray-400">per person (min 3 people)</span>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20book%20the%20Family%20Group%20Package."
+                                target="_blank"
+                                class="inline-flex items-center gap-2 bg-rose-700 text-white px-6 py-3 rounded-xl font-medium text-sm hover:bg-rose-800 transition whitespace-nowrap">Enquire
+                                Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
+                        <div class="border-t border-gray-100 pt-4 mt-4">
+                            <p class="text-xs text-gray-400"><i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
+                                Add-ons: Hair extensions (+₹500), Nail art (+₹300), Jewellery setting (+₹200).
+                                Travel
+                                charges apply for locations beyond 20km from Bankura.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== ABOUT PAGE ==================== -->
+    <div id="page-about" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="img-zoom rounded-3xl overflow-hidden aspect-[3/4]">
+                        <img src="https://aicdn.picsart.com/cb705d2d-c598-477f-a0cd-e5255a302250.png" alt="The Mohul"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span
+                            class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">About</span>
+                        <h1 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight mb-6">Meet The
+                            Artist
+                            Behind <span class="text-rose-600">The Mohul</span></h1>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>With over 8 years of professional experience, The Mohul has become one of Bankura's
+                                most
+                                trusted names in bridal and party makeup. What started as a passion has transformed
+                                into
+                                a studio that has styled 500+ brides across West Bengal.</p>
+                            <p>Trained under professional makeup artists from Kolkata and certified in HD and
+                                Airbrush
+                                techniques, The Mohul specializes in creating looks that are not just beautiful —
+                                but
+                                <strong class="text-gray-900">bulletproof against Indian weather
+                                    conditions</strong>.
+                            </p>
+                            <p>Every client gets personalized attention, premium products, and a commitment to
+                                punctuality that's rare in this industry. Because your wedding day doesn't wait for
+                                anyone.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Certifications -->
+                <div class="mb-20">
+                    <div class="text-center mb-12">
+                        <span
+                            class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Credentials</span>
+                        <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">Certifications &
+                            Training</h2>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                            <div class="w-12 h-12 bg-gold-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="award" class="w-6 h-6 text-gold-600"></i>
+                            </div>
+                            <h3 class="font-semibold text-sm text-gray-900 mb-1">HD Makeup Certified</h3>
+                            <p class="text-xs text-gray-400">Professional HD Makeup Artistry</p>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                            <div class="w-12 h-12 bg-gold-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="wind" class="w-6 h-6 text-gold-600"></i>
+                            </div>
+                            <h3 class="font-semibold text-sm text-gray-900 mb-1">Airbrush Certified</h3>
+                            <p class="text-xs text-gray-400">Advanced Airbrush Technique Training</p>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                            <div class="w-12 h-12 bg-gold-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-gold-600"></i>
+                            </div>
+                            <h3 class="font-semibold text-sm text-gray-900 mb-1">Kolkata Trained</h3>
+                            <p class="text-xs text-gray-400">Trained under senior Kolkata MUAs</p>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                            <div class="w-12 h-12 bg-gold-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="badge-check" class="w-6 h-6 text-gold-600"></i>
+                            </div>
+                            <h3 class="font-semibold text-sm text-gray-900 mb-1">Justdial Verified</h3>
+                            <p class="text-xs text-gray-400">Verified Professional ★ 4.9 Rating</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Why Reliable -->
+                <div>
+                    <div class="text-center mb-12">
+                        <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">Why Brides Trust
+                            The
+                            Mohul</h2>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="alarm-clock" class="w-5 h-5 text-rose-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-sm mb-1">Always On Time</h3>
+                                <p class="text-sm text-gray-500">Arrives 30 minutes before the scheduled time. Every
+                                    single time.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="repeat" class="w-5 h-5 text-rose-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-sm mb-1">Trial Before Commitment</h3>
+                                <p class="text-sm text-gray-500">Book a trial session first. See the look, then
+                                    decide
+                                    with zero pressure.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="truck" class="w-5 h-5 text-rose-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-sm mb-1">Travels to Your Venue</h3>
+                                <p class="text-sm text-gray-500">No need to come to the studio — The Mohul comes to
+                                    you,
+                                    fully equipped.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="heart-handshake" class="w-5 h-5 text-rose-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-sm mb-1">500+ Happy Brides</h3>
+                                <p class="text-sm text-gray-500">A proven track record with real reviews and real
+                                    results.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PRODUCTS PAGE ==================== -->
+    <div id="page-products" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Quality
+                        First</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Products We Use</h1>
+                    <p class="mt-3 text-gray-500 max-w-xl mx-auto">We only use premium, dermatologist-tested brands.
+                        No
+                        duplicates. No compromises. Your skin deserves the best.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            💄</div>
+                        <p class="font-semibold text-xs text-gray-900">MAC</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Foundation & Lips</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            ✨</div>
+                        <p class="font-semibold text-xs text-gray-900">Charlotte Tilbury</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Highlighter & Glow</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            👁️</div>
+                        <p class="font-semibold text-xs text-gray-900">Urban Decay</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Eyeshadow Palettes</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            🌬️</div>
+                        <p class="font-semibold text-xs text-gray-900">Temptu</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Airbrush System</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            🧴</div>
+                        <p class="font-semibold text-xs text-gray-900">Bobbi Brown</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Concealer & Base</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            💎</div>
+                        <p class="font-semibold text-xs text-gray-900">NARS</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Blush & Contour</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            🔒</div>
+                        <p class="font-semibold text-xs text-gray-900">Kryolan</p>
+                        <p class="text-[10px] text-gray-400 mt-1">HD Foundation</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            💧</div>
+                        <p class="font-semibold text-xs text-gray-900">Morphe</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Brushes & Blending</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            🌸</div>
+                        <p class="font-semibold text-xs text-gray-900">Lakmé</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Indian Skin Tones</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            💦</div>
+                        <p class="font-semibold text-xs text-gray-900">Smashbox</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Setting Spray</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            🪞</div>
+                        <p class="font-semibold text-xs text-gray-900">Anastasia</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Brows</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-5 border border-gray-100 text-center">
+                        <div
+                            class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                            🌿</div>
+                        <p class="font-semibold text-xs text-gray-900">Fixderma</p>
+                        <p class="text-[10px] text-gray-400 mt-1">Skin Prep & Primer</p>
+                    </div>
+                </div>
+                <div class="mt-12 bg-gold-50 border border-gold-200 rounded-2xl p-6 flex items-start gap-4">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-gold-600 flex-shrink-0 mt-0.5"></i>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-1">100% Authentic Products Guarantee</h3>
+                        <p class="text-sm text-gray-500">We purchase all products only from authorized retailers. No
+                            grey market, no duplicates, no expired stock. We're happy to show you the products
+                            before
+                            the session.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== BOOKING PAGE ==================== -->
+    <div id="page-booking" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Simple
+                        Process</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">How to Book</h1>
+                </div>
+                <!-- Steps -->
+                <div class="grid md:grid-cols-4 gap-6 mb-20">
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-rose-700 font-bold text-xl">
+                            1</div>
+                        <h3 class="font-semibold text-gray-900 mb-1">Inquiry</h3>
+                        <p class="text-sm text-gray-500">WhatsApp or call us with your date, event type, and
+                            location.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-rose-700 font-bold text-xl">
+                            2</div>
+                        <h3 class="font-semibold text-gray-900 mb-1">Trial Session</h3>
+                        <p class="text-sm text-gray-500">Book a trial (₹1,500, adjustable in final booking). Try
+                            your
+                            dream look.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-rose-700 font-bold text-xl">
+                            3</div>
+                        <h3 class="font-semibold text-gray-900 mb-1">Confirm Booking</h3>
+                        <p class="text-sm text-gray-500">Pay 50% advance to lock your date. Balance on event day.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-gold-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-gold-700 font-bold text-xl">
+                            4</div>
+                        <h3 class="font-semibold text-gray-900 mb-1">Event Day</h3>
+                        <p class="text-sm text-gray-500">We arrive on time, fully equipped. You just relax and look
+                            stunning.</p>
+                    </div>
+                </div>
+                <!-- Trial Session Info -->
+                <div class="bg-white rounded-3xl border border-gray-200 overflow-hidden mb-12">
+                    <div class="bg-gradient-to-r from-rose-800 to-rose-700 p-8 text-white">
+                        <h2 class="text-2xl font-semibold mb-2">Trial Session — Everything You Need to Know</h2>
+                        <p class="text-white/70 text-sm">The most important step before your wedding makeup.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <div class="flex gap-3"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-sm text-gray-900">What happens in a trial?</p>
+                                        <p class="text-sm text-gray-500">We discuss your outfit, jewellery, venue,
+                                            and
+                                            create 1-2 look options on your face. You can take photos and decide.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-sm text-gray-900">How long does it take?</p>
+                                        <p class="text-sm text-gray-500">60-90 minutes for a complete trial look
+                                            including hairstyling.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-sm text-gray-900">Cost</p>
+                                        <p class="text-sm text-gray-500">₹1,500 per trial session. This amount is
+                                            fully
+                                            adjustable in your final booking amount.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex gap-3"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-sm text-gray-900">When should I book a trial?</p>
+                                        <p class="text-sm text-gray-500">Ideally 2-4 weeks before the event. Earlier
+                                            is
+                                            better for peak wedding season.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-sm text-gray-900">Should I bring anything?</p>
+                                        <p class="text-sm text-gray-500">Yes! Bring your outfit or a photo,
+                                            jewellery,
+                                            and any reference images you've saved.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-sm text-gray-900">What if I don't like the look?
+                                        </p>
+                                        <p class="text-sm text-gray-500">We'll modify it on the spot. Your
+                                            satisfaction
+                                            is non-negotiable — that's the whole point of a trial.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Availability -->
+                <div
+                    class="bg-rose-50 border border-rose-200 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-rose-900 mb-1 flex items-center gap-2"><i data-lucide="calendar-x"
+                                class="w-5 h-5"></i> Booking Availability</h3>
+                        <p class="text-sm text-rose-700">Wedding season 2025 dates are filling fast. December 2024
+                            and
+                            January 2025 have only 3-4 slots remaining. Book early to avoid disappointment.</p>
+                    </div>
+                    <a href="https://wa.me/917980203100?text=Hi!%20I%20want%20to%20check%20availability%20for%20my%20wedding%20date."
+                        target="_blank"
+                        class="bg-rose-700 text-white px-6 py-3 rounded-xl font-medium text-sm hover:bg-rose-800 transition whitespace-nowrap flex-shrink-0">Check
+                        Availability</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== TESTIMONIALS PAGE ==================== -->
+    <div id="page-testimonials" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Real
+                        Reviews</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">What Our Brides Say
+                    </h1>
+                    <p class="mt-3 text-gray-500">Real faces. Real names. Real reviews from Justdial and direct
+                        feedback.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100">
+                        <div class="flex gap-1 mb-3"><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i></div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">"I was very worried about my makeup
+                            lasting through the Bengali wedding rituals — especially the sindoor and hours of
+                            dancing.
+                            But The Mohul's work was incredible! My makeup looked exactly the same at midnight as it
+                            did
+                            at 6 AM. The photos are proof!"</p>
+                        <div class="flex items-center gap-3"><img src="https://picsum.photos/seed/rev-priya/80/80.jpg"
+                                class="w-10 h-10 rounded-full object-cover" alt="Priya">
+                            <div>
+                                <p class="font-medium text-sm">Priya Dutta</p>
+                                <p class="text-xs text-gray-400">Bride — Bankura ★★★★★</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100">
+                        <div class="flex gap-1 mb-3"><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i></div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">"She came to Durgapur for my wedding
+                            at 4
+                            AM and was fully ready before time. The airbrush look was so natural that my relatives
+                            couldn't believe it was makeup. Worth every rupee!"</p>
+                        <div class="flex items-center gap-3"><img src="https://picsum.photos/seed/rev-anjali/80/80.jpg"
+                                class="w-10 h-10 rounded-full object-cover" alt="Anjali">
+                            <div>
+                                <p class="font-medium text-sm">Anjali Mukherjee</p>
+                                <p class="text-xs text-gray-400">Bride — Durgapur ★★★★★</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100">
+                        <div class="flex gap-1 mb-3"><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i></div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">"Booked The Mohul for my sister's
+                            wedding
+                            after seeing my own results. She did makeup for 6 family members and everyone looked
+                            amazing. Very patient and professional."</p>
+                        <div class="flex items-center gap-3"><img src="https://picsum.photos/seed/rev-sneha/80/80.jpg"
+                                class="w-10 h-10 rounded-full object-cover" alt="Sneha">
+                            <div>
+                                <p class="font-medium text-sm">Sneha Roy</p>
+                                <p class="text-xs text-gray-400">Bride — Asansol ★★★★★</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100">
+                        <div class="flex gap-1 mb-3"><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i></div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">"I had acne scars and was very
+                            conscious.
+                            She used colour correction so beautifully that my skin looked flawless in photos. Not
+                            cakey
+                            at all. She really knows her craft."</p>
+                        <div class="flex items-center gap-3"><img src="https://picsum.photos/seed/rev-tanya/80/80.jpg"
+                                class="w-10 h-10 rounded-full object-cover" alt="Tanya">
+                            <div>
+                                <p class="font-medium text-sm">Tanya Sharma</p>
+                                <p class="text-xs text-gray-400">Bride — Purulia ★★★★★</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100">
+                        <div class="flex gap-1 mb-3"><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i></div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">"My engagement was in June — peak
+                            summer.
+                            I was sweating just sitting, but my makeup didn't budge! The setting technique is next
+                            level. Highly recommend for summer weddings."</p>
+                        <div class="flex items-center gap-3"><img src="https://picsum.photos/seed/rev-rimi/80/80.jpg"
+                                class="w-10 h-10 rounded-full object-cover" alt="Rimi">
+                            <div>
+                                <p class="font-medium text-sm">Rimi Sen</p>
+                                <p class="text-xs text-gray-400">Engagement — Bankura ★★★★★</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100">
+                        <div class="flex gap-1 mb-3"><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i><i data-lucide="star"
+                                class="w-4 h-4 fill-gold-400 text-gold-400"></i></div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">"Justdial rating of 4.9 is legit.
+                            She's
+                            the best in Bankura, no competition. Used MAC and Kryolan products — I checked. Very
+                            hygienic, new brushes for everything."</p>
+                        <div class="flex items-center gap-3"><img src="https://picsum.photos/seed/rev-deepa/80/80.jpg"
+                                class="w-10 h-10 rounded-full object-cover" alt="Deepa">
+                            <div>
+                                <p class="font-medium text-sm">Deepa Karmakar</p>
+                                <p class="text-xs text-gray-400">Party Makeup — Bankura ★★★★★</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Justdial Badge -->
+                <div class="mt-12 text-center">
+                    <div
+                        class="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 border border-gray-200 shadow-sm">
+                        <span class="text-yellow-500 text-lg">★★★★★</span>
+                        <span class="text-sm text-gray-600"><strong>4.9/5</strong> on Justdial — <strong>500+
+                                reviews</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== CONTACT PAGE ==================== -->
+    <div id="page-contact" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Get in
+                        Touch</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Contact & Location
+                    </h1>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <!-- Contact Methods -->
+                        <div class="space-y-5 mb-8">
+                            <a href="https://wa.me/917980203100" target="_blank"
+                                class="flex items-center gap-4 bg-green-50 rounded-2xl p-5 border border-green-100 hover:bg-green-100 transition group">
+                                <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center"><svg
+                                        class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                    </svg></div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 group-hover:text-green-700 transition">
+                                        WhatsApp</p>
+                                    <p class="text-sm text-gray-500">+91 79802 03100 — Fastest response</p>
+                                </div>
+                            </a>
+                            <a href="tel:+917980203100"
+                                class="flex items-center gap-4 bg-rose-50 rounded-2xl p-5 border border-rose-100 hover:bg-rose-100 transition group">
+                                <div class="w-12 h-12 bg-rose-600 rounded-xl flex items-center justify-center"><i
+                                        data-lucide="phone" class="w-6 h-6 text-white"></i></div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 group-hover:text-rose-700 transition">
+                                        Phone
+                                    </p>
+                                    <p class="text-sm text-gray-500">+91 79802 03100 — Call anytime</p>
+                                </div>
+                            </a>
+                            <a href="mailto:themohulmakeup@gmail.com"
+                                class="flex items-center gap-4 bg-gold-50 rounded-2xl p-5 border border-gold-100 hover:bg-gold-100 transition group">
+                                <div class="w-12 h-12 bg-gold-600 rounded-xl flex items-center justify-center"><i
+                                        data-lucide="mail" class="w-6 h-6 text-white"></i></div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 group-hover:text-gold-700 transition">
+                                        Email
+                                    </p>
+                                    <p class="text-sm text-gray-500">themohulmakeup@gmail.com</p>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Location -->
+                        <div class="bg-white rounded-2xl border border-gray-200 p-6">
+                            <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2"><i
+                                    data-lucide="map-pin" class="w-5 h-5 text-rose-600"></i> Studio Location</h3>
+                            <p class="text-sm text-gray-600 mb-3">The Mohul Makeup Studio<br>Jhantipahari,
+                                Bankura<br>West Bengal - 722212</p>
+                            <div
+                                class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center text-gray-400 text-sm">
+                                <span>📍 Google Maps Embed Area</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Travel Info -->
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-2xl border border-gray-200 p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2"><i data-lucide="truck"
+                                    class="w-5 h-5 text-rose-600"></i> Travel & Charges</h3>
+                            <div class="space-y-3 text-sm text-gray-600">
+                                <div class="flex justify-between py-2 border-b border-gray-50"><span>Within Bankura
+                                        town</span><span class="font-medium text-gray-900">Free</span></div>
+                                <div class="flex justify-between py-2 border-b border-gray-50"><span>Within 20 km
+                                        radius</span><span class="font-medium text-gray-900">₹200</span></div>
+                                <div class="flex justify-between py-2 border-b border-gray-50"><span>Durgapur /
+                                        Asansol</span><span class="font-medium text-gray-900">₹500 - ₹800</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-50"><span>Purulia /
+                                        Midnapore</span><span class="font-medium text-gray-900">₹800 - ₹1,200</span>
+                                </div>
+                                <div class="flex justify-between py-2"><span>Kolkata</span><span
+                                        class="font-medium text-gray-900">Contact for quote</span></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-3"><i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
+                                Travel charges are one-way. Round trip for outstation. Early morning charges (before
+                                5
+                                AM) may apply extra ₹300.</p>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-gray-200 p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2"><i data-lucide="clock"
+                                    class="w-5 h-5 text-rose-600"></i> Working Hours</h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between"><span class="text-gray-500">Monday -
+                                        Saturday</span><span class="font-medium">8 AM - 8 PM</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">Sunday</span><span
+                                        class="font-medium">By Appointment</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">Wedding
+                                        Days</span><span class="font-medium text-rose-600">Available 24/7</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-rose-50 border border-rose-200 rounded-2xl p-5 text-center">
+                            <p class="text-sm text-rose-800 font-medium mb-2">Prefer a quick chat? 📱</p>
+                            <a href="https://wa.me/917980203100?text=Hi%20The%20Mohul!%20I%20have%20a%20query."
+                                target="_blank"
+                                class="inline-flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-green-600 transition">WhatsApp
+                                Us Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== FAQ PAGE ==================== -->
+    <div id="page-faq" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Got
+                        Questions?</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Frequently Asked
+                        Questions</h1>
+                </div>
+                <div class="space-y-3" id="faq-list">
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">Will my makeup last in heat and
+                                humidity?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">Absolutely. We use a multi-step
+                                setting process including primer, setting powder, setting spray (Smashbox/Kryolan),
+                                and
+                                specific techniques for Indian weather. Our brides regularly report 12-16 hour wear
+                                even
+                                in summer weddings. This is our specialty.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">Do you travel early morning for
+                                wedding
+                                makeup?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">Yes! We regularly arrive at 3-4 AM
+                                for
+                                early wedding rituals. For arrivals before 5 AM, a nominal early morning charge of
+                                ₹300
+                                applies. We always arrive 30 minutes before the scheduled time — that's our
+                                guarantee.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">What if I need to cancel my
+                                booking?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">Cancellations 15+ days before:
+                                Full
+                                refund minus ₹200 processing fee. 7-14 days: 50% refund. Less than 7 days: No
+                                refund.
+                                However, you can reschedule to another date (subject to availability) without any
+                                penalty. See our <a href="#" onclick="navigateTo('refund')"
+                                    class="text-rose-600 underline">Refund Policy</a> for details.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">Is the trial session
+                                mandatory?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">Not mandatory, but highly
+                                recommended
+                                — especially for brides. It eliminates any guesswork on the final day. The trial
+                                cost
+                                (₹1,500) is fully adjustable in your booking amount, so it's essentially free if you
+                                proceed.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">Do you use disposable products for
+                                hygiene?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">Yes. Fresh disposable sponges,
+                                mascara
+                                wands, lip applicators, and cotton pads for every client. Brushes are sanitized with
+                                Dettol after each use. We never double-dip. Read our full <a href="#"
+                                    onclick="navigateTo('hygiene')" class="text-rose-600 underline">Hygiene
+                                    Practices</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">Can you do makeup for sensitive
+                                skin?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">Yes. We carry both regular and
+                                sensitive-skin products (hypoallergenic, fragrance-free options from MAC, Bobbi
+                                Brown).
+                                Please mention any allergies during the trial so we can test beforehand.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">How much advance do I need to
+                                pay?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">50% advance at the time of booking
+                                to
+                                confirm your date. The remaining 50% is paid on the event day (before makeup
+                                starts). We
+                                accept UPI, Google Pay, PhonePe, and cash.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button onclick="toggleFaq(this)"
+                            class="w-full flex items-center justify-between p-5 text-left"><span
+                                class="font-medium text-gray-900 text-sm pr-4">Do you provide makeup for groom /
+                                family
+                                members?</span><i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 faq-icon transition-transform duration-300"></i></button>
+                        <div class="faq-answer px-5">
+                            <p class="text-sm text-gray-500 leading-relaxed pb-5">Yes! We offer groom makeup (₹1,500
+                                onwards) and family group packages (₹2,000/person for 3+ members). This includes
+                                light
+                                grooming, even skin tone, and camera-ready look.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 text-center bg-gray-50 rounded-2xl p-6">
+                    <p class="text-sm text-gray-500 mb-3">Still have questions?</p>
+                    <a href="https://wa.me/917980203100?text=Hi!%20I%20have%20a%20question." target="_blank"
+                        class="inline-flex items-center gap-2 bg-rose-700 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-rose-800 transition">Ask
+                        on WhatsApp <i data-lucide="message-circle" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== HYGIENE PAGE ==================== -->
+    <div id="page-hygiene" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Your
+                        Safety
+                        Matters</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Hygiene & Safety
+                        Practices</h1>
+                    <p class="mt-3 text-gray-500 max-w-xl mx-auto">We take hygiene as seriously as we take beauty.
+                        Here's exactly what we do for every single client.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mb-4"><i
+                                data-lucide="sparkles" class="w-6 h-6 text-rose-600"></i></div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Fresh Disposables Every Time</h3>
+                        <p class="text-sm text-gray-500">New sponges, mascara wands, lip applicators, cotton pads,
+                            and
+                            earbuds for every client. Nothing is reused — ever.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mb-4"><i
+                                data-lucide="brush" class="w-6 h-6 text-rose-600"></i></div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Sanitized Brushes</h3>
+                        <p class="text-sm text-gray-500">All brushes are washed with brush shampoo and sanitized
+                            with
+                            Dettol antiseptic solution after every single use.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mb-4"><i
+                                data-lucide="hand" class="w-6 h-6 text-rose-600"></i></div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Hand Hygiene</h3>
+                        <p class="text-sm text-gray-500">Hands are washed with soap and sanitized before touching
+                            any
+                            product or client's face. Gloves available on request.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mb-4"><i
+                                data-lucide="palette" class="w-6 h-6 text-rose-600"></i></div>
+                        <h3 class="font-semibold text-gray-900 mb-2">No Double-Dipping</h3>
+                        <p class="text-sm text-gray-500">Products are scraped onto a palette first — never applied
+                            directly from the container to the face.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mb-4"><i
+                                data-lucide="shield-check" class="w-6 h-6 text-rose-600"></i></div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Authentic Products Only</h3>
+                        <p class="text-sm text-gray-500">No expired products, no grey-market items, no duplicates.
+                            All
+                            purchased from authorized retailers only.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mb-4"><i
+                                data-lucide="package" class="w-6 h-6 text-rose-600"></i></div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Clean Kit & Setup</h3>
+                        <p class="text-sm text-gray-500">The makeup kit is cleaned and organized before every
+                            assignment. Sanitized workspace, clean towels, and tidy setup guaranteed.</p>
+                    </div>
+                </div>
+                <div class="mt-10 bg-rose-50 border border-rose-200 rounded-2xl p-6 text-center">
+                    <p class="text-sm text-rose-800">💡 <strong>Want to see our hygiene process in action?</strong>
+                        Ask
+                        us during your trial session — we'll walk you through everything.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== SOCIAL PROOF PAGE ==================== -->
+    <div id="page-social-proof" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Follow
+                        Us</span>
+                    <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">Social Feed &
+                        Features
+                    </h1>
+                </div>
+                <!-- Instagram Grid -->
+                <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2"><i data-lucide="instagram"
+                        class="w-5 h-5 text-rose-600"></i> Instagram Feed</h2>
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-16">
+                    <div class="img-zoom rounded-xl overflow-hidden aspect-square"><img
+                            src="https://picsum.photos/seed/insta-1/300/300.jpg" class="w-full h-full object-cover"
+                            alt="Instagram Post"></div>
+                    <div class="img-zoom rounded-xl overflow-hidden aspect-square"><img
+                            src="https://picsum.photos/seed/insta-2/300/300.jpg" class="w-full h-full object-cover"
+                            alt="Instagram Post"></div>
+                    <div class="img-zoom rounded-xl overflow-hidden aspect-square"><img
+                            src="https://picsum.photos/seed/insta-3/300/300.jpg" class="w-full h-full object-cover"
+                            alt="Instagram Post"></div>
+                    <div class="img-zoom rounded-xl overflow-hidden aspect-square"><img
+                            src="https://picsum.photos/seed/insta-4/300/300.jpg" class="w-full h-full object-cover"
+                            alt="Instagram Post"></div>
+                    <div class="img-zoom rounded-xl overflow-hidden aspect-square"><img
+                            src="https://picsum.photos/seed/insta-5/300/300.jpg" class="w-full h-full object-cover"
+                            alt="Instagram Post"></div>
+                    <div class="img-zoom rounded-xl overflow-hidden aspect-square"><img
+                            src="https://picsum.photos/seed/insta-6/300/300.jpg" class="w-full h-full object-cover"
+                            alt="Instagram Post"></div>
+                </div>
+                <!-- Press / Features -->
+                <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2"><i data-lucide="newspaper"
+                        class="w-5 h-5 text-gold-600"></i> Featured & Listed On</h2>
+                <div class="grid sm:grid-cols-3 gap-6 mb-12">
+                    <div class <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-blue-600">JD</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm mb-1">Justdial</h3>
+                        <p class="text-xs text-gray-400 mb-2">Verified Business Listing</p>
+                        <div class="flex items-center justify-center gap-1">
+                            <span class="text-yellow-500 text-sm">★★★★★</span>
+                            <span class="text-xs font-medium text-gray-600">4.9</span>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                        <div class="w-14 h-14 bg-pink-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-pink-600">IG</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm mb-1">Instagram</h3>
+                        <p class="text-xs text-gray-400 mb-2">@themohulmakeup</p>
+                        <p class="text-xs text-gray-500">Active bridal content creator</p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                        <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-green-600">G</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm mb-1">Google Business</h3>
+                        <p class="text-xs text-gray-400 mb-2">The Mohul Makeup Studio</p>
+                        <div class="flex items-center justify-center gap-1">
+                            <span class="text-yellow-500 text-sm">★★★★★</span>
+                            <span class="text-xs font-medium text-gray-600">4.8</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Social Links -->
+                <div class="bg-gradient-to-r from-rose-800 to-rose-700 rounded-2xl p-8 text-center text-white">
+                    <h3 class="text-xl font-semibold mb-2">Stay Connected</h3>
+                    <p class="text-white/70 text-sm mb-6">Follow us for daily bridal inspiration, behind-the-scenes,
+                        and
+                        makeup tips.</p>
+                    <div class="flex justify-center gap-4">
+                        <a href="#"
+                            class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition"><i
+                                data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#"
+                            class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition"><i
+                                data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#"
+                            class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition"><i
+                                data-lucide="youtube" class="w-5 h-5"></i></a>
+                        <a href="https://wa.me/917980203100" target="_blank"
+                            class="w-12 h-12 bg-green-500/80 rounded-xl flex items-center justify-center hover:bg-green-500 transition">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PRIVACY POLICY PAGE ==================== -->
+    <div id="page-privacy" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-10">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Legal</span>
+                    <h1 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Privacy Policy</h1>
+                    <p class="text-sm text-gray-400 mt-2">Last updated: January 2025</p>
+                </div>
+                <div class="prose prose-sm max-w-none space-y-6 text-gray-600 leading-relaxed">
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">1. Information We Collect</h2>
+                        <p>We collect minimal information to provide our services: your name, phone number, email
+                            address, event date, and location when you contact us via WhatsApp, phone, or our
+                            website.
+                            We do not use tracking cookies or analytics that identify you personally.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">2. How We Use Your Information</h2>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>To respond to your booking inquiries</li>
+                            <li>To send booking confirmations and reminders</li>
+                            <li>To provide our makeup services on the agreed date</li>
+                            <li>To send promotional messages only if you opt in</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">3. Photos & Media</h2>
+                        <p>We may take before/after photos for our portfolio. By availing our services, you consent
+                            to
+                            your photos being used on our website, Instagram, Justdial, and other promotional
+                            channels.
+                            If you do not want your photos shared, please inform us before the session — we respect
+                            your
+                            preference completely.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">4. Data Sharing</h2>
+                        <p>We do NOT sell, rent, or share your personal information with any third party for
+                            marketing
+                            purposes. Your data stays with us.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">5. Data Security</h2>
+                        <p>We take reasonable measures to protect your information. WhatsApp conversations are
+                            end-to-end encrypted. Any written records are stored securely.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">6. Your Rights</h2>
+                        <p>You can request to view, modify, or delete your personal data at any time by contacting
+                            us at
+                            themohulmakeup@gmail.com or via WhatsApp at +91 79802 03100.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">7. Contact</h2>
+                        <p>For any privacy-related queries:<br>Email: themohulmakeup@gmail.com<br>Phone/WhatsApp:
+                            +91
+                            79802 03100</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== TERMS & CONDITIONS PAGE ==================== -->
+    <div id="page-terms" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-10">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Legal</span>
+                    <h1 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Terms & Conditions
+                    </h1>
+                    <p class="text-sm text-gray-400 mt-2">Last updated: January 2025</p>
+                </div>
+                <div class="space-y-6 text-gray-600 leading-relaxed">
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">1. Booking & Confirmation</h2>
+                        <p>A booking is confirmed only after 50% advance payment is received. Verbal confirmations
+                            without payment are not considered confirmed and may be overwritten by paid bookings.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">2. Payment Terms</h2>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>50% advance at booking, 50% on event day (before makeup starts)</li>
+                            <li>Accepted modes: UPI, Google Pay, PhonePe, Paytm, Cash</li>
+                            <li>No cheques accepted</li>
+                            <li>Prices are inclusive of all taxes unless stated otherwise</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">3. Travel Charges</h2>
+                        <p>Travel charges are communicated upfront before booking confirmation. They are
+                            non-negotiable
+                            and separate from the makeup package price. Early morning surcharges (before 5 AM: ₹300)
+                            apply as informed.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">4. Timeliness</h2>
+                        <p>The Mohul commits to arriving 30 minutes before the scheduled time. However, delays due
+                            to
+                            unavoidable circumstances (traffic, weather, etc.) will be communicated immediately. No
+                            refund is applicable for delays under 30 minutes.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">5. Client Responsibilities</h2>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Client should be ready at the agreed time with a clean face (no previous makeup)
+                            </li>
+                            <li>Provide reference images and outfit details beforehand for best results</li>
+                            <li>Ensure adequate lighting and a clean workspace at the venue</li>
+                            <li>Inform about any skin allergies or sensitivities before the session</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">6. Photography & Portfolio Rights</h2>
+                        <p>The Mohul reserves the right to use photos from the session for portfolio, social media,
+                            and
+                            marketing purposes. Clients may opt out by informing in writing before the session.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">7. Liability</h2>
+                        <p>The Mohul uses premium, authentic products and follows strict hygiene protocols. However,
+                            in
+                            case of any allergic reaction, The Mohul is not liable if the client did not disclose
+                            known
+                            allergies beforehand. A patch test can be arranged during the trial session.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">8. Governing Law</h2>
+                        <p>These terms are governed by the laws of India. Any disputes shall be subject to the
+                            jurisdiction of courts in Bankura, West Bengal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== REFUND POLICY PAGE ==================== -->
+    <div id="page-refund" class="page">
+        <section class="pt-28 pb-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-10">
+                    <span class="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3 block">Legal</span>
+                    <h1 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Refund &
+                        Cancellation
+                        Policy</h1>
+                    <p class="text-sm text-gray-400 mt-2">Last updated: January 2025</p>
+                </div>
+                <div class="space-y-6 text-gray-600 leading-relaxed">
+                    <!-- Refund Table -->
+                    <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <div class="bg-rose-50 px-6 py-4 border-b border-gray-100">
+                            <h2 class="text-lg font-semibold text-gray-900">Cancellation Timeline</h2>
+                        </div>
+                        <div class="divide-y divide-gray-50">
+                            <div class="flex justify-between items-center px-6 py-4">
+                                <div>
+                                    <p class="font-medium text-gray-900 text-sm">15+ days before event</p>
+                                    <p class="text-xs text-gray-400">Full refund request</p>
+                                </div>
+                                <span
+                                    class="bg-green-50 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">90%
+                                    Refund</span>
+                            </div>
+                            <div class="flex justify-between items-center px-6 py-4">
+                                <div>
+                                    <p class="font-medium text-gray-900 text-sm">7 - 14 days before event</p>
+                                    <p class="text-xs text-gray-400">Partial refund request</p>
+                                </div>
+                                <span
+                                    class="bg-yellow-50 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full">50%
+                                    Refund</span>
+                            </div>
+                            <div class="flex justify-between items-center px-6 py-4">
+                                <div>
+                                    <p class="font-medium text-gray-900 text-sm">Less than 7 days before event</p>
+                                    <p class="text-xs text-gray-400">Late cancellation</p>
+                                </div>
+                                <span class="bg-red-50 text-red-700 text-xs font-semibold px-3 py-1 rounded-full">No
+                                    Refund</span>
+                            </div>
+                            <div class="flex justify-between items-center px-6 py-4">
+                                <div>
+                                    <p class="font-medium text-gray-900 text-sm">No-show on event day</p>
+                                    <p class="text-xs text-gray-400">Client doesn't show up</p>
+                                </div>
+                                <span class="bg-red-50 text-red-700 text-xs font-semibold px-3 py-1 rounded-full">No
+                                    Refund</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">Rescheduling Policy</h2>
+                        <p class="text-sm mb-2">You can reschedule your booking to another date <strong>free of
+                                charge</strong>, subject to availability. Rescheduling requests should be made at
+                            least
+                            48 hours before the original date.</p>
+                        <p class="text-sm text-gray-500">If the new date falls in peak season and is unavailable,
+                            you
+                            can opt for a full refund or choose another date.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">Trial Session Refund</h2>
+                        <p class="text-sm">Trial session fee (₹1,500) is <strong>non-refundable</strong> if you
+                            choose
+                            not to proceed with the booking. However, if you book the full package, the trial amount
+                            is
+                            <strong>fully adjusted</strong> in the total cost.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">Refund Processing</h2>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Refunds are processed within 5-7 business days</li>
+                            <li>Refund will be sent via the same payment method used for booking</li>
+                            <li>A processing fee of ₹200 may be deducted from the refund amount</li>
+                            <li>You'll receive a confirmation message once the refund is initiated</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">Force Majeure</h2>
+                        <p class="text-sm">In case of natural disasters, pandemic-related restrictions, or
+                            government-mandated lockdowns, a full refund or free rescheduling will be offered — no
+                            questions asked.</p>
+                    </div>
+                    <div class="bg-gold-50 border border-gold-200 rounded-2xl p-5 flex items-start gap-3">
+                        <i data-lucide="info" class="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5"></i>
+                        <p class="text-sm text-gold-800">To initiate a cancellation or rescheduling, contact us via
+                            WhatsApp at +91 79802 03100 or email themohulmakeup@gmail.com with your booking details.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== GLOBAL FOOTER ==================== -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-600 to-gold-500 flex items-center justify-center text-white font-bold">
+                            M</div>
+                        <div>
+                            <span class="text-lg font-semibold">The Mohul</span>
+                            <span class="block text-[10px] tracking-[0.2em] uppercase text-gray-500">Makeup
+                                Studio</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed max-w-sm mb-4">Premium bridal & party makeup
+                        services in Bankura, West Bengal. Trusted by 500+ brides for flawless, long-lasting looks.</p>
+                    <p class="text-sm text-gray-500"><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i>
+                        Jhantipahari, Bankura, West Bengal</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#" onclick="navigateTo('home')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">Home</a>
+                        <a href="#" onclick="navigateTo('portfolio')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">Portfolio</a>
+                        <a href="#" onclick="navigateTo('services')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">Services</a>
+                        <a href="#" onclick="navigateTo('about')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">About</a>
+                        <a href="#" onclick="navigateTo('contact')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">Contact</a>
+                        <a href="#" onclick="navigateTo('faq')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">FAQ</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-4">Policies</h4>
+                    <div class="space-y-2">
+                        <a href="#" onclick="navigateTo('privacy')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">Privacy Policy</a>
+                        <a href="#" onclick="navigateTo('terms')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">Terms & Conditions</a>
+                        <a href="#" onclick="navigateTo('refund')"
+                            class="block text-sm text-gray-400 hover:text-gold-400 transition">Refund Policy</a>
+                    </div>
+                    <h4 class="font-semibold text-sm mt-6 mb-3">Follow Us</h4>
+                    <div class="flex gap-3">
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-500 transition"><i
+                                data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-500 transition"><i
+                                data-lucide="facebook" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-500 transition"><i
+                                data-lucide="youtube" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+                <p class="text-xs text-gray-500">© 2025 The Mohul Makeup Studio. All rights reserved.</p>
+                <p class="text-xs text-gray-500">Listed on <span class="text-gold-400">Justdial</span> ★ 4.9 Rating</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // ---- SPA Navigation ----
+        let currentPage = 'home';
+
+        function navigateTo(page) {
+            event && event.preventDefault();
+
+            // Hide current page
+            const currentEl = document.getElementById('page-' + currentPage);
+            if (currentEl) {
+                currentEl.classList.remove('active');
+            }
+
+            // Show new page
+            currentPage = page;
+            const newEl = document.getElementById('page-' + page);
+            if (newEl) {
+                // Small delay for transition effect
+                setTimeout(() => {
+                    newEl.classList.add('active');
+                }, 50);
+            }
+
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === page) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Re-init icons for new page
+            setTimeout(() => lucide.createIcons(), 100);
+
+            // Fix before/after slider images
+            if (page === 'before-after') {
+                setTimeout(fixBASliders, 200);
+            }
+        }
+
+        // ---- Navbar scroll effect ----
+        // ---- Navbar scroll effect ----
+        const navbar = document.getElementById('navbar');
+
+        function updateNavbar() {
+            const scrollY = window.scrollY;
+            const isHome = currentPage === 'home';
+            const isScrolled = scrollY > 80;
+
+            if (isHome && !isScrolled) {
+                // Home page, top: transparent + white text (dark hero behind)
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.boxShadow = 'none';
+                navbar.querySelectorAll('.nav-text-color').forEach(el => el.style.color = '#FFFFFF');
+                navbar.querySelector('.nav-logo-text').style.color = '#FFFFFF';
+                navbar.querySelector('.nav-logo-sub').style.color = 'rgba(255,255,255,0.5)';
+            } else {
+                // All other pages OR scrolled: white bg + dark text
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.08)';
+                navbar.querySelectorAll('.nav-text-color').forEach(el => el.style.color = '#1F2937');
+                navbar.querySelector('.nav-logo-text').style.color = '#111827';
+                navbar.querySelector('.nav-logo-sub').style.color = '#9CA3AF';
+            }
+        }
+
+        window.addEventListener('scroll', updateNavbar);
+
+        // Call on page switch too — hook into switchPage
+        const originalSwitchPage = switchPage;
+        switchPage = function (page) {
+            originalSwitchPage(page);
+            updateNavbar();
+        };
+
+        // Initial call
+        updateNavbar();
+
+        // Initialize navbar state
+        // window.dispatchEvent(new Event('scroll'));
+
+        // ---- Mobile Menu ----
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('menu-overlay');
+            const isOpen = menu.classList.contains('open');
+
+            if (isOpen) {
+                menu.classList.remove('open');
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            } else {
+                menu.classList.add('open');
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // ---- Gallery Filter ----
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.cat === category) {
+                    item.style.display = 'block';
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.4s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // ---- Before/After Slider ----
+        let activeSlider = null;
+
+        function startSlide(e, slider) {
+            e.preventDefault();
+            activeSlider = slider;
+            moveSlide(e, slider);
+        }
+
+        function moveSlide(e, slider) {
+            if (!slider) return;
+            const rect = slider.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let x = clientX - rect.left;
+            x = Math.max(0, Math.min(x, rect.width));
+            const percent = (x / rect.width) * 100;
+
+            const afterDiv = slider.querySelector('.ba-after');
+            const handle = slider.querySelector('.ba-handle');
+            const afterImg = afterDiv.querySelector('img');
+
+            afterDiv.style.width = percent + '%';
+            handle.style.left = percent + '%';
+            afterImg.style.width = (rect.width / (percent / 100)) + 'px';
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if (activeSlider) moveSlide(e, activeSlider);
+        });
+
+        document.addEventListener('mouseup', () => {
+            activeSlider = null;
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (activeSlider) moveSlide(e, activeSlider);
+        });
+
+        document.addEventListener('touchend', () => {
+            activeSlider = null;
+        });
+
+        function fixBASliders() {
+            document.querySelectorAll('.ba-slider').forEach(slider => {
+                const rect = slider.getBoundingClientRect();
+                const afterDiv = slider.querySelector('.ba-after');
+                const afterImg = afterDiv.querySelector('img');
+                afterDiv.style.width = '50%';
+                afterImg.style.width = (rect.width * 2) + 'px';
+            });
+        }
+
+        // ---- FAQ Toggle ----
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const icon = item.querySelector('.faq-icon');
+            const isOpen = answer.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+
+            // Open clicked if was closed
+            if (!isOpen) {
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // ---- Toast Notification ----
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ---- Intersection Observer for animations ----
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements when pages become active
+        const mutationObserver = new MutationObserver(() => {
+            document.querySelectorAll('.page.active .card-hover, .page.active .faq-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)';
+                observer.observe(el);
+            });
+        });
+
+        document.querySelectorAll('.page').forEach(page => {
+            mutationObserver.observe(page, { attributes: true, attributeFilter: ['class'] });
+        });
+
+        // Initial observation for home page
+        setTimeout(() => {
+            document.querySelectorAll('#page-home .card-hover').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)';
+                observer.observe(el);
+            });
+        }, 100);
+
+        // ---- Handle browser back/forward ----
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            switchPage(hash);
+        });
+
+        function switchPage(page) {
+            const currentEl = document.getElementById('page-' + currentPage);
+            if (currentEl) currentEl.classList.remove('active');
+            currentPage = page;
+            const newEl = document.getElementById('page-' + page);
+            if (newEl) {
+                setTimeout(() => newEl.classList.add('active'), 50);
+            }
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === page) link.classList.add('active');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => lucide.createIcons(), 100);
+            if (page === 'before-after') setTimeout(fixBASliders, 200);
+        }
+
+        // Override navigateTo to include hash + preventDefault
+        navigateTo = function (page) {
+            if (event) event.preventDefault();
+            window.location.hash = page;
+            switchPage(page);
+        };
+
+        // Load correct page from hash on refresh
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            if (hash !== 'home') {
+                switchPage(hash);
+            }
+        });
+
+        // Update URL on navigation
+        // const originalNavigateTo = navigateTo;
+        // navigateTo = function (page) {
+        //     window.location.hash = page;
+        //     // Call original logic without re-setting hash
+        //     const currentEl = document.getElementById('page-' + currentPage);
+        //     if (currentEl) currentEl.classList.remove('active');
+        //     currentPage = page;
+        //     const newEl = document.getElementById('page-' + page);
+        //     if (newEl) {
+        //         setTimeout(() => newEl.classList.add('active'), 50);
+        //     }
+        //     document.querySelectorAll('.nav-link').forEach(link => {
+        //         link.classList.remove('active');
+        //         if (link.dataset.page === page) link.classList.add('active');
+        //     });
+        //     window.scrollTo({ top: 0, behavior: 'smooth' });
+        //     setTimeout(() => lucide.createIcons(), 100);
+        //     if (page === 'before-after') setTimeout(fixBASliders, 200);
+        // };
+
+        // // Load correct page from hash on refresh
+        // window.addEventListener('DOMContentLoaded', () => {
+        //     const hash = window.location.hash.replace('#', '') || 'home';
+        //     if (hash !== 'home') {
+        //         navigateTo(hash);
+        //     }
+        // });
+    </script>
+</body>
+
+</html>
